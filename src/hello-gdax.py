@@ -8,5 +8,3 @@
 import gdax
 
 public_client = gdax.PublicClient()
-
-
