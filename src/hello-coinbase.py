@@ -18,3 +18,5 @@ price         = client.get_spot_price(currency=currency_code)
 
 
 print('Current bitcoin price in %s: %s' % (currency_code, price.amount))
+
+

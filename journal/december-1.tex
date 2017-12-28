@@ -1,0 +1,87 @@
+\title{December 22nd}
+
+\subsection{Summary}
+
+What I will accomplished today:
+
+\begin{itemize}
+	\item Register for Coinbase
+	\item Bought 99 dollars of Bitcoin
+	\item Figure out the latency issue on putting in orders
+	\item Register for GDAX
+\end{itemize}
+
+
+\title{December 23rd}
+
+Next 5 day plan in broad strokes:
+
+\begin{enumerate}
+	\item read through rickyhan's blog and see what you can draft off of
+	\item start with coinbase account and API
+	\item figure out the relationship between bitcoin wallet, my bank account, and coinbase account
+	\item as a warmup exercise, learn how to backtest among different currencies on GDAX
+	\item part one is getting historical data
+	\item part two is getting a live feed of the data
+	\item part three is developing a workflow that makes sense to you
+	\item make appropriate plots in case you need a blog
+	\item figure out how to do the same thing with GDAX
+\end{enumerate}
+
+
+End of day deliverables: 
+
+\begin{enumerate}
+	\item \st{decide on an exchange to trade from: GDAX}
+	\item \st{decide on a database: Google BigTable}
+	% 
+	\item set up a google cloud account, check the one you already have
+	\item run an instance of Bigtable and insert and remove things from the database
+	% 
+	\item have a minimal python trading environment for: backtesting, recording pnl, and interact with database you    have
+	\item consider the possibility of not using a trading environment, and just place orders using the raw API
+	\item could run a hello world tradebot where you flip coins and buy/sell 5 USD of bitcoins over a 2 minute period
+
+	% 
+	\item all historical data for all crypto-coins on disk
+	\item figure out how to host the database, insert and remove items from the database
+	\item figure out how much it cost to host the database
+	\item a hello world thing should have 
+\end{enumerate}
+
+here are some setbacks:
+
+\begin{enumerate}
+	\item do not have driver's license therefore cannot signup for GDAX
+	\item bittrex is down for new users
+\end{enumerate}
+
+Here are some trade ideas:
+
+\begin{enumerate}
+	\item consider using this resource as a starter: https://blog.patricktriest.com/analyzing-cryptocurrencies-python/
+	to get used to the libraries needed for analysis
+	\item download historical prices of all the assets traded on GDAX
+	\item correlation between bitcoin vs {litecoin, etherium, twitter feed}
+	\item figure out if you buy assets at prices p and q, it is actually locked at those 
+	\item figure out how frequently you can buy with bots
+	\item read about basic volatitliy strategies
+	\item get historical prices of all the assets
+	\item run some sort of correlation, how do you know if it's spurious?
+	\item run twitter feed corelation, figure out the in time between positive vs negative
+	  sentiment and think about when to place orders
+\end{enumerate}
+
+Here are some interesting references:
+
+\begin{enumerate}
+	\item Google Bigtable doc: https://cloud.google.com/bigtable/docs/quickstart-hbase
+	\item Analyzing crypto using python: https://blog.patricktriest.com/analyzing-cryptocurrencies-python/
+	\item how to move fund from coinbase to GDAX: https://bitcoinexchangeguide.com/how-to-avoid-paying-coinbase-fees/
+	\item hello crypto blog: https://medium.com/@linda.xie/beginners-guide-series-on-cryptoassets-d897535d887
+	\item ricky han's blog: http://rickyhan.com/jekyll/update/2017/09/09/import-orderbook-from-exchanges.html
+		  he seems knowledgeable enough based on converation on discord
+	\item bitcoin arb: https://github.com/butor/blackbird/blob/master/README.md
+	\item command line trading bot: https://github.com/carlos8f/zenbot
+	\item excel templates: http://www.exinfm.com/free_spreadsheets.html
+\end{enumerate}
