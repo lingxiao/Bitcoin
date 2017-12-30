@@ -19,4 +19,3 @@ useful links:
 1. bitcoin apps: http://clutchofthedeadhand.com/roundup-2017/
 2. bitcoinbook : https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/ch09.asciidoc
 3. basic attention token: https://basicattentiontoken.org/
-

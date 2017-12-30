@@ -1,10 +1,37 @@
-\title{December 28th}
+\title{December 29th}
 
 \subsection{Plan to accomplish today}
 
 \begin{itemize}
-	\item Build basic Etherium contract following tutorial from source 1. 
+	\item Build basic Etherium contract following tutorial from source 1. Have a basic prototype running on node.js
+	\item consider how to port it to a python version
 \end{itemize}
+
+\subsection{Today I learned: how to get started with Ethereum}
+
+
+\begin{itemize}
+	\item install Geth: so I can run ethereum client on computer
+		\begin{itemize}	
+			\item source: http://candidtim.github.io/ethereum/2016/03/24/ethereum-quick-start.html
+		\end{itemize}
+	% 
+	\item doing this \[geth --testnet --datadir ~/.ethereum-testnet\] will download entire testnet blockchain onto computer
+	% 
+	\item doing this: \[geth --fast --cache 1024\] downloads a compressed (?) version of blockchain
+	% 
+	\item Test RPC is a client for testing:
+	% 
+			testrpc is a Node.js based Ethereum client for testing and development. It uses ethereumjs to simulate full client behavior and make developing Ethereum applications much faster. It also includes all popular RPC functions and features (like events) and can be run deterministically to make development a breeze.
+	% 
+			While Geth is a full client in GO Language that you can use to connect to the real chain, or start your own testnet server.
+	% 
+			geth is the the command line interface for running a full ethereum node implemented in Go. It is the main deliverable of the Frontier Release
+	% 
+	\item mine blocks and earn ether on testnet
+	% 
+\end{itemize}
+
 
 
 \subsection{Sources to Consider}
@@ -12,4 +39,15 @@
 \begin{itemize}
 	\item The ethereum hello world: https://medium.com/@mvmurthy/ethereum-for-web-developers-890be23d1d0c
 	\item The ethereum book: https://ethereum.gitbooks.io/frontier-guide/content/ethereum.html
+	\item Trending Cryptocurrencies: https://docs.google.com/spreadsheets/d/1r7YFBWGshhXJwXzSUKT61SngmtR8OfvIA08kXe6WJw4/edit#gid=1048393921
+	\item 24 hour volume ranking for cryptocurrencies: https://coinmarketcap.com/exchanges/volume/24-hour/
 \end{itemize}	
+
+
+
+
+
+
+
+
+
