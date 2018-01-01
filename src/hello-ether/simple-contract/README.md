@@ -1,0 +1,1 @@
+A simple contract application built with node.js
