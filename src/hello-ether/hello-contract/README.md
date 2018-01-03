@@ -4,7 +4,7 @@
 ## Steps ## 
 
 1. install web3: npm install ethereum/web3.js
-2. run private Ethereum blockchain
+2. run private Ethereum blockchain: http://www.digitalatomindustry.com/install-run-private-ethereum-blockchain/
 3. 
 
 
@@ -17,5 +17,5 @@
 ## Commands ##
 
 1. start node console: node
-2. run development ethereum network:  geth --dev --rpc --ipcpath ~/Library/Ethereum/geth.ipc --datadir /Users/lingxiao/Documents/Projects/Bitcoin/data console
+2. run dev ethereum network:  geth --dev --rpc --ipcpath ~/Library/Ethereum/geth.ipc --datadir path/to/data console
 3. start express.js setup application: npm start
