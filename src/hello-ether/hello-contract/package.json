@@ -14,6 +14,7 @@
   "author": "xiao ling",
   "license": "MIT",
   "dependencies": {
+    "eth-lightwallet": "^3.0.0",
     "web3": "github:ethereum/web3.js"
   }
 }

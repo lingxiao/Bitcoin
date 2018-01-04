@@ -22,4 +22,4 @@
 3. run private blockchain with:
 	1. geth --nodiscover --datadir data --networkid 123 init genesis.json 
 	2. geth --identity "myNode" --datadir path/to/data --networkid 123 --nodiscover --maxpeers 0 --rpc --rpcapi 'web3,eth,admin,personal,shh,debug' --rpcaddr '127.0.0.1' --rpcport 8545 --rpccorsdomain '*' console
-4. start express.js setup application: npm start
+4. run javascript file: node index.js

@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend of login system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xiao Ling",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "cors": "^2.8.1",
+    "cuid": "^1.3.8",
+    "express": "~4.15.5",
+    "express-jwt": "^5.1.0",
+    "jsonwebtoken": "^7.2.1",
+    "web3": "github:ethereum/web3.js"
+  }
+}
+
+

@@ -1,5 +1,8 @@
 pragma solidity ^0.4.2;
 
+/**
+	Login contract
+*/
 contract Login {
 
     event LoginAttempt(address sender, string challenge);
@@ -9,7 +12,7 @@ contract Login {
     }
 
 }
-
+                                                 
 
 
 // contract HelloWorld {
