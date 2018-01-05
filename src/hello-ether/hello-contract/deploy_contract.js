@@ -25,13 +25,12 @@ var user1 = web3.eth.accounts[1];
 
 
 // hard code path to contract, and read contract
-var contract_path = "Voting.sol"
+var contract_path = "./solidity/contracts/SimpleStorage.sol"
 const input       = fs.readFileSync(contract_path)
 const output      = solc.compile(input.toString(), 1);
 
 // get contract key name
 var contract_name = ":" + contract_path.split(".")[0]
-
 
 
 /**
@@ -58,11 +57,18 @@ const Contract = web3.eth.contract(abi_);
 */
 web3.personal.unlockAccount(user0, "xenomorph1", 15000000);
 
-var deployed_contract = Contract.new(["Rama", "Nick", "Jose"],  // candidate for election
+var deployed_contract = Contract.new(
 						   { data : "0x" + bytecode    			// contract in bytecode
 	                       , from : user0              			// ID the person who deployed the contract for the blockchain
 	                       , gas  : 400000             			// price to pay to deploy the code onto the blockchain
 	                   	   })						   			// user0's ether account will be used to buy 400000 units of gas, price of gas is  set by the network
+
+
+// var deployed_contract = Contract.new(["Rama", "Nick", "Jose"],  // candidate for election
+// 						   { data : "0x" + bytecode    			// contract in bytecode
+// 	                       , from : user0              			// ID the person who deployed the contract for the blockchain
+// 	                       , gas  : 400000             			// price to pay to deploy the code onto the blockchain
+// 	                   	   })						   			// user0's ether account will be used to buy 400000 units of gas, price of gas is  set by the network
 
 /** 
 	get the address of the contract
@@ -73,19 +79,19 @@ var deployed_contract = Contract.new(["Rama", "Nick", "Jose"],  // candidate for
 var contract = Contract.at(deployed_contract.address);
 
 // declare event callback => right now even tis not firing
-var event = contract.Log_to_console();
-event.watch(function(err, results){
+// var event = contract.Log_to_console();
+// event.watch(function(err, results){
 
-	if (err){
+// 	if (err){
 
-		console.log("error ", err);
+// 		console.log("error ", err);
 
-	} else {
+// 	} else {
 
-		console.log("fired: ", results);
-	}
+// 		console.log("fired: ", results);
+// 	}
 
-});
+// });
 
 	
 /**
@@ -95,9 +101,8 @@ event.watch(function(err, results){
 
 	- strategy: run a very small and simple contract that you understand
 	  and make sure everything runs
-
 */
-if (true) {
+if (false) {
 
 	/**
 		note we're using contract's abi. why are we XXX.call it?
