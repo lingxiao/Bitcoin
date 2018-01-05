@@ -30,7 +30,7 @@ const input       = fs.readFileSync(contract_path)
 const output      = solc.compile(input.toString(), 1);
 
 // get contract key name
-var contract_name = ":" + contract_path.split(".")[0]
+var contract_name = ":" + pr.last(contract_path.split("/")).split(".")[0]
 
 
 /**
