@@ -11,6 +11,11 @@ contract SimpleStorage{
 		storedData = x;
 	}
 
+
+	/**
+		note constant functions do not cost ether and are
+		executed locally in the EVM
+	*/ 
 	function get() public constant returns (uint){
 
 		return storedData;

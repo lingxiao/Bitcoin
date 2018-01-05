@@ -114,13 +114,42 @@ event.watch(function(err,ret){
 });
 
 
-// note this changes the value, but for some reason when I call
-// later it does not have that same value
+/**
+	call XXX.call runs the contract code locally, nothing will be submitted to the chain
+*/ 
 var val = contract.change.call(424)
 console.log("changed value: ", val)
 
 
-console.log("DONE!")
+/**
+	call XXX.sendTransaction(input, {from: user_x}, callback) will send transaction as contract
+	to the network, and spend gas from user_x, with executed `callback`
+*/ 
+contract.change.sendTransaction(900, {from: user0}, function(err, val){
+
+	if (err){
+
+		console.log("transaction error: ", err)
+
+	} else {
+
+		console.log("transaction successeded: ", val)
+	}
+
+});
+
+contract.set.sendTransaction(500, {from: user0}, function(err, val){
+
+	if (err){
+
+		console.log("transaction error: ", err)
+
+	} else {
+
+		console.log("transaction succeeded: ", val)
+	}
+
+})
 
 
 
