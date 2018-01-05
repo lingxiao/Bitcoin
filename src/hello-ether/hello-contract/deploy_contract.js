@@ -33,6 +33,7 @@ const output      = solc.compile(input.toString(), 1);
 var contract_name = ":" + pr.last(contract_path.split("/")).split(".")[0]
 
 
+
 /**
 	This is the bytecode you get when the source code in [Contract].sol 
 	is compiled. This is the code which will be deployed to the blockchain
@@ -64,6 +65,28 @@ var deployed_contract = Contract.new(
 	                   	   })						   			// user0's ether account will be used to buy 400000 units of gas, price of gas is  set by the network
 
 
+
+
+
+/**
+	hypothesis: you're not sure what happens when a transaction is submitted as this point
+				that's why you can't debug this thing. There's no intuition on 
+				operational semantics
+
+				note when we do eht.getTransaction([HASH]), we see that the 
+				blockNumber is null, meaning the transaction is not in a mined block
+
+				does that mean the transaction will not be executed?
+
+				when I do eth.getBlock("pending"), I see a lot of transactioins
+
+				note a block number is assigned when mining starts 
+
+				TODO: think about how to run these functions on successes,
+				maybe wrap them up in a function and then have a callback
+*/ 
+
+
 // var deployed_contract = Contract.new(["Rama", "Nick", "Jose"],  // candidate for election
 // 						   { data : "0x" + bytecode    			// contract in bytecode
 // 	                       , from : user0              			// ID the person who deployed the contract for the blockchain
@@ -73,10 +96,34 @@ var deployed_contract = Contract.new(
 /** 
 	get the address of the contract
 	when we interact with the contract, we need the adress and ABI
+	Note: if the blockchain is mining, then then address filed should not be undefined
+
+	TODO: this should move to a call back of some sort just to make sure
+		  this is fired after the contract has been mined by the chain
 */
-// problem: this address is undefined, but we can still find it for some reason?
-// is this why the contract is not firing? since the address isn't defined for some reason?
 var contract = Contract.at(deployed_contract.address);
+
+// now we set and get the value and use a callback to see what happened in the other thread
+var event = contract.ReturnValue({_from: web3.eth.coinbase});
+
+event.watch(function(err,ret){
+
+	if (err){ console.log(err); }
+	console.log("Value: ", ret.args._x)
+
+});
+
+
+// note this changes the value, but for some reason when I call
+// later it does not have that same value
+var val = contract.change.call(424)
+console.log("changed value: ", val)
+
+
+console.log("DONE!")
+
+
+
 
 // declare event callback => right now even tis not firing
 // var event = contract.Log_to_console();
