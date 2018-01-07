@@ -13,6 +13,7 @@ const express = require("express");
 
 var web3 = new Web3();
 
+// hard code it for now
 var dir = "/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-contract/backend/"
 
 /**
@@ -28,7 +29,8 @@ var dir = "/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-cont
     strategy:
         1. serve simple html
         2. serve more complex html and do some event listeners
-
+        3. 
+        4. make a express boiler plate app and migrate to it
 */
 
 // launch app
@@ -37,8 +39,8 @@ var app = express()
 app.use(express.static("voting"))
 
 // URL map to resource
-app.get("/"        , (req, res) => res.send("hello world!!!"));
-app.get("/about"   , (req, res) => res.send("hello from about page"));
+app.get("/"        , (req, res) => res.send("hello world!!!"             ));
+app.get("/about"   , (req, res) => res.send("hello from about page"       ));
 app.get("/contact" , (req, res) => res.send("contact me at mememe@me.com"));
 
 // now we want to serve an xxx.html 
