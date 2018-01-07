@@ -13,7 +13,6 @@ var web3 = new Web3();
 
 /**
 	connecting to running ethereum node at prespecified port
-
 */
 web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
 
@@ -67,14 +66,6 @@ var deployed_contract = Contract.new({data : "0x" + bytecode    			// contract i
 		  	                       , from : user0              			// ID the person who deployed the contract for the blockchain
 	      		                   , gas  : 400000             			// price to pay to deploy the code onto the blockchain user0's ether account will be used to buy 400000 units of gas, price of gas is  set by the network
 	              		     	   })
-
-
-//  	   , function(err, contract){          // async callback
-
-// 	   	if (err){ console.log("contract error: ", err)}
-//    	else { console.log("contract submitted to chain: ", contract.address) }	                   	   	
-//    }
-// })		   			
 
 
  /** 

@@ -4,13 +4,9 @@
 	@date 1/3/2018
 */
 
-const Web3       = require("web3");
-const path       = require("path");
 const pr         = require("../prelude");
 const express    = require("express");
 const bodyParser = require("body-parser");
-
-var web3 = new Web3();
 
 // hard code it for now
 var template_dir = "/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-contract/frontend"
@@ -50,8 +46,6 @@ var template_dir = "/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/h
 var app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(express.static("voting"))
 
 // URL map to resource
 app.get("/"        , (req, res) => res.send("hello world!!!"             ));
