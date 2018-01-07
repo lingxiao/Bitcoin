@@ -6,9 +6,9 @@
 
 // import modules
 var fs   = require("fs");
-var pr   = require("../prelude")
 var solc = require("solc");
 var Web3 = require("web3");
+var pr   = require("../prelude")
 var web3 = new Web3();
 
 /**
@@ -45,7 +45,6 @@ const bytecode = output.contracts[contract_name].bytecode
 	Whenever you have to interact with the contract in the future, you will need this abi definition.
 */
 const abi_     = JSON.parse(output.contracts[contract_name].interface)
-
 
 // create contract class using ABI, instances of this Contract will have the interface specified by the abi
 const Contract = web3.eth.contract(abi_);
@@ -117,8 +116,7 @@ contract.set.sendTransaction(500, {from: user0}, function(err, val){
 	if (err){ console.log("transaction error: ", err)      }
 	else    {  console.log("transaction succeeded: ", val) }
 
-})
-
+});
 
 /**
 	now we attach listener to the event so we can get the return value
@@ -142,4 +140,9 @@ evt.watch(function(err,ret){
 // note we get a return value here, but it is the transaction hash, not 
 // the actualy return value from the contract
 var t = contract.change.sendTransaction(Math.round(Math.random() * 100), {from: user0})
+	
+
+
+
+
 

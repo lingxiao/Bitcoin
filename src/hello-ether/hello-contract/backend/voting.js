@@ -1,19 +1,18 @@
 /**
- * @file simpleStorage.js
+ * @file voting.js
  * @author Xiao Ling <lingxiao@seas.upenn.edu>
- * @date 1/3/2018
+ * @date 1/6/2018
 */
 
 // import modules
 var fs   = require("fs");
-var pr   = require("../prelude")
 var solc = require("solc");
+var pr   = require("../prelude")
 var Web3 = require("web3");
 var web3 = new Web3();
 
 /**
-	connecting to running ethereum node at prespecified port
-
+	connecting to running ethereum node at prespecified ports
 */
 web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
 
@@ -68,14 +67,13 @@ var deployed_contract = Contract.new(["Santorum", "Obama", "Clinton"]   // candi
 	      		                   , gas  : 400000             			// price to pay to deploy the code onto the blockchain user0's ether account will be used to buy 400000 units of gas, price of gas is  set by the network
 	              		     	   })
 
-
  /** 
  	note, should wait till address is confirmed by the blockchian before running this
 	get the address of the contract
 	when we interact with the contract, we need the adress and ABI
 	Note: if the blockchain is mining, then then address filed should not be undefined
 
-	TODO: this should move to a call back of some sort just to make sure
+ 	TODO: this should move to a call back of some sort just to make sure
 		  this is fired after the contract has been mined by the chain
 */
 var contract = Contract.at(deployed_contract.address);
@@ -92,21 +90,22 @@ contract.voteForCandidate.sendTransaction("Clinton", {from: user0});
 
 // these should be executed after the block has been mined, the votes should have been
 // incremented
-console.log("Obama's votes: ", contract.totalVotesFor("Obama"))
+console.log("Obama's votes: "  , contract.totalVotesFor("Obama"))
 console.log("Clinton's votes: ", contract.totalVotesFor("Clinton"))
 
 
+// right now: focus on getting a webapp up where we interact with the blockchain on a
+// private server and basic web GUI
+/**
+	strategy: 
+		1. make a simple web app that serves information to port 800
+		2. if we are going to use the template, we should feed it fake stuff first
+		not from the blockchain
+		3. connect this web app to the program here, think about what part of this program
+			needs to be connected where
+		4. 
 
-
-
-
-
-
-
-
-
-
-
+*/ 
 
 
 

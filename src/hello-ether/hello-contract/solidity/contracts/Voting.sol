@@ -16,10 +16,6 @@ contract Voting {
   
   bytes32[] public candidateList;
 
-  /**
-    DEBUG even log
-  */
-  event Log_to_console(string name);
 
   /* This is the constructor which will be called once when you
   deploy the contract to the blockchain. When we deploy the contract,
@@ -31,7 +27,6 @@ contract Voting {
 
   // This function returns the total votes a candidate has received so far
   function totalVotesFor(bytes32 candidate) view public returns (uint8) {
-    Log_to_console("totalVotesFor");
     require(validCandidate(candidate));
     return votesReceived[candidate];
   }
@@ -41,7 +36,6 @@ contract Voting {
   function voteForCandidate(bytes32 candidate) public {
     require(validCandidate(candidate));
     votesReceived[candidate] += 1;
-    Log_to_console("voteForCandidate");
   }
 
   function validCandidate(bytes32 candidate) view public returns (bool) {

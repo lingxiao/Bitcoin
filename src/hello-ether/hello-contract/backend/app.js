@@ -5,6 +5,24 @@
 	@Note: this hangs when running console with node app.js
 */
 
+const Web3    = require("web3");
+const http    = require("http");
+const pr      = require("../prelude");
+const express = require("../express");
+
+var web3 = new Web3();
+
+/**
+    set up server using express
+*/
+app.get("/", (req, res) => res.send("hello world!!!"));
+app.listen(3000, () => console.log("example app listening on port 3000"));
+
+
+
+
+/**
+
 
 const LoginContract = require("./login_contract.js");
 const loginContract = LoginContract.at("0xf7b06365e9012592c8c136b71c7a2475c7a94d71")
@@ -39,3 +57,4 @@ loginAttempt.watch((error, event) => {
 
 
 
+*/
