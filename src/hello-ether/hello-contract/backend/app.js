@@ -10,7 +10,10 @@ const pr      = require("../prelude");
 const path    = require("path")
 const express = require("express");
 
+
 var web3 = new Web3();
+
+var dir = "/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-contract/backend/"
 
 /**
     set up server using express
@@ -42,11 +45,12 @@ app.get("/contact" , (req, res) => res.send("contact me at mememe@me.com"));
 app.get("/hello"  , function(req, res){
 
     // using absolute file path, need to get relative file path somehow
-    res.sendFile("/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-contract/backend/hello.html");
+    res.sendFile(dir + "hello.html");
 
 })
 
 // now serve a page with a button on it, and think about how to get events back
+
 
 
 
@@ -56,7 +60,5 @@ app.get("/hello"  , function(req, res){
 
 // run the server
 app.listen(3000, () => console.log("web app listening on port 3000"));
-
-
 
 
