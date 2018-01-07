@@ -30,13 +30,11 @@ const output      = solc.compile(input.toString(), 1);
 // get contract key name
 var contract_name = ":" + pr.last(contract_path.split("/")).split(".")[0]
 
-
 /**
 	This is the bytecode you get when the source code in [Contract].sol 
 	is compiled. This is the code which will be deployed to the blockchain
 */
 const bytecode = output.contracts[contract_name].bytecode
-
 
 /**
 	This is an interface or template of the contract (called abi) which tells 
@@ -44,7 +42,6 @@ const bytecode = output.contracts[contract_name].bytecode
 	Whenever you have to interact with the contract in the future, you will need this abi definition.
 */
 const abi_     = JSON.parse(output.contracts[contract_name].interface)
-
 
 // create contract class using ABI, instances of this Contract will have the interface specified by the abi
 const Contract = web3.eth.contract(abi_);

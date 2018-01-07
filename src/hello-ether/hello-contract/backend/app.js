@@ -6,17 +6,59 @@
 */
 
 const Web3    = require("web3");
-const http    = require("http");
 const pr      = require("../prelude");
-const express = require("../express");
+const path    = require("path")
+const express = require("express");
 
 var web3 = new Web3();
 
 /**
     set up server using express
+
+    problem: right now there is a package setup problem... may behoove
+    me to slow down and do it right once again?
+
+    problem: right now the stuff is very confusing, maybe set up a new 
+    minimal application? but then you get all this shit ... 
+    what if I installed it here.. get it working here. and then transfer over?
+    
+    strategy:
+        1. serve an html web app here
+        2. 
+
 */
-app.get("/", (req, res) => res.send("hello world!!!"));
-app.listen(3000, () => console.log("example app listening on port 3000"));
+
+// launch app
+var app = express()
+
+app.use(express.static("voting"))
+
+// URL map to resource
+app.get("/"        , (req, res) => res.send("hello world!!!"));
+app.get("/about"   , (req, res) => res.send("hello from about page"));
+app.get("/contact" , (req, res) => res.send("contact me at mememe@me.com"));
+
+// now we want to serve an xxx.html 
+app.get("/hello"  , function(req, res){
+
+    res.sendFile("/hello.html")
+
+})
+
+
+
+// now we want to interact with the xxx.html so that events are heard in the back
+
+
+
+// look for pub-sub primitives, not callback stuff in documentation
+
+
+
+// run the server
+app.listen(3000, () => console.log("web app listening on port 3000"));
+
+
 
 
 
