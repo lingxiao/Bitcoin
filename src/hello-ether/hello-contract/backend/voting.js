@@ -46,6 +46,7 @@ const abi_     = JSON.parse(output.contracts[contract_name].interface)
 // create contract class using ABI, instances of this Contract will have the interface specified by the abi
 const Contract = web3.eth.contract(abi_);
 
+
 /**
 	now create an instance of the contract. XXXX.new deploys the contract on
 	the block chain

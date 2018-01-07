@@ -1,7 +1,8 @@
 /**
-	@file app.js
-	@author Xiao Ling <lingxiao@seas.upenn.edu>
-	@date 1/3/2018
+	@file: app_vote.js
+	@author: Xiao Ling <lingxiao@seas.upenn.edu>
+	@date: 1/7/2018
+	@Note: web application that interacts with ethereum
 */
 
 const Web3       = require("web3");
