@@ -23,8 +23,8 @@ var web3 = new Web3();
     what if I installed it here.. get it working here. and then transfer over?
     
     strategy:
-        1. serve an html web app here
-        2. 
+        1. serve simple html
+        2. serve more complex html and do some event listeners
 
 */
 
@@ -41,19 +41,18 @@ app.get("/contact" , (req, res) => res.send("contact me at mememe@me.com"));
 // now we want to serve an xxx.html 
 app.get("/hello"  , function(req, res){
 
-    res.sendFile("/hello.html")
+    // using absolute file path, need to get relative file path somehow
+    res.sendFile("/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-contract/backend/hello.html");
 
 })
+
+// now serve a page with a button on it, and think about how to get events back
 
 
 
 // now we want to interact with the xxx.html so that events are heard in the back
 
-
-
 // look for pub-sub primitives, not callback stuff in documentation
-
-
 
 // run the server
 app.listen(3000, () => console.log("web app listening on port 3000"));
@@ -61,42 +60,3 @@ app.listen(3000, () => console.log("web app listening on port 3000"));
 
 
 
-
-
-/**
-
-
-const LoginContract = require("./login_contract.js");
-const loginContract = LoginContract.at("0xf7b06365e9012592c8c136b71c7a2475c7a94d71")
-
-
-// LoginAttempt is the name of the event that signals logins in the
-// Login contract. This is specified in the login.sol file.
-const loginAttempt = loginContract.LoginAttempt();
-
-const challenges = {};
-const successfulLogins = {};
-
-loginAttempt.watch((error, event) => {
-
-    if(error) {
-    	console.log("Error while login in:")
-        console.log(error);
-        return;
-    }
-
-    console.log(event);
-
-    const sender = event.args.sender.toLowerCase();
-
-    // If the challenge sent through Ethereum matches the one we generated,
-    // mark the login attempt as valid, otherwise ignore it.
-    if(challenges[sender] === event.args.challenge) {
-    	console.log("success branch")
-        successfulLogins[sender] = true;
-    }
-});
-
-
-
-*/
