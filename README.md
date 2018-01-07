@@ -1,1 +1,1 @@
-## Blockchain and Ethereum related projects##
+## Blockchain and Ethereum related projects

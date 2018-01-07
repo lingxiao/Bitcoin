@@ -1,0 +1,165 @@
+\title{January 1st}
+
+Today's goals: 
+
+\begin{itemize}
+	\item finish reading Ethereum documentation.
+	\item write minimal contract and send it over the private network.
+	\item get a basic REPL workflow for contracts running on EVM 
+\end{itemize}
+
+
+\begin{itemize}
+	\item comprehensive step by step of writing a contract: https://auth0.com/blog/an-introduction-to-ethereum-and-smart-contracts-part-2/
+	\item an example of a crowdsale: https://www.ethereum.org/crowdsale
+\end{itemize}
+
+
+\title{January 2nd}
+
+Today's goals:
+
+\begin{itemize}
+	\item Navigate to a page on node.js website, and do [something] with the contracts
+\end{itemize}
+
+Today's accomplishments:
+
+\begin{itemize}
+	\item setup private geth network and mined for ether
+	\item interacted with private network via a node.js program
+\end{itemize}
+
+
+\title{January 3rd}
+
+Today's goals:
+
+\begin{itemize}
+	\item develop a minimum contract and watch how it interacts with the network
+	\item develop a node front/backend that pipes the contract around
+	\item figure out how the pieces of the system work with each other
+\end{itemize}
+
+
+Today's todos towards goals:
+
+\begin{itemize}
+	\item figure out what adress and private keys are 
+	\item follow login contract tutorial to get a sense of how things fit together
+	\item try sending a contract over the console. learn how contracts compile
+	\item make a basic web interface
+\end{itemize}
+
+Today's discovered workflow:
+
+\begin{enumerate}
+	\item write contract in .sol
+	\item load as newline tab stripped string into javascript file
+	\item compile in javascript file
+\end{enumerate}	
+
+What I learned:
+
+\begin{enumerate}
+	\item Contract Defintion: Formal definition in high-level code (e.g. solidity).
+	% 
+	\item Compiled Contract: The contract converted to byte-code to run on the Ethereum Virtual Machine (EVM), adhering to the specification. Note the function names and input parameters are hashed during compilation. Therefore, for another account to call a function, it must first be given the funtion name and arguments - hence the ABI:
+	% 
+	\item Application Binary Interface - ABI: A list of the contract's functions and arguments (in JSON1 format). An account wishing to use a smart contract's function uses the ABI to hash the function definition so it can create the EVM bytecode required to call the function. This is then included in the data field, Td, of a transaction and interpreted by the EVM with the code at the target account (the address of the contract).
+\end{enumerate}	
+
+
+sources:
+
+\begin{enumerate}
+	\item http://hypernephelist.com/2016/12/13/compile-deploy-ethereum-smart-contract-web3-solc.html
+	\item https://medium.com/@mvmurthy/full-stack-hello-world-voting-ethereum-dapp-tutorial-part-1-40d2d0d807c2
+	\item solidity voting example: http://solidity.readthedocs.io/en/develop/solidity-by-example.html
+\end{enumerate}
+
+
+\title{January 4th}
+
+sources:
+
+\begin{enumerate}
+	\item solidity voting example, very comprehensive: http://solidity.readthedocs.io/en/develop/solidity-by-example.html
+\end{enumerate}
+
+
+\title{January 5th}
+
+
+What I learned today:
+
+\begin{enumerate}
+	\item in order for contracts to be taken by the blockchain, mining has to be running
+	\item Events are used in three ways:
+		\begin{enumerate}
+			\item smart contract return values for the user interface
+			\item asynch triggers with data
+			\item cheaper form of storage
+		\end{enumerate}
+	\item I sent a contract to the private blockchain, mutated its value and 
+		  saw that it persisted on the chain
+\end{enumerate}
+
+workflow:
+
+\begin{enumerate}
+	\item start node console: node
+	\item run dev ethereum network:  geth --dev --rpc --ipcpath ~/Library/Ethereum/geth.ipc --datadir path/to/data console
+	\item run private blockchain with:
+	\[geth --nodiscover --datadir data --networkid 123 init genesis.json\]
+	and then:
+	\[geth --identity "myNode" --datadir path/to/data --networkid 123 --nodiscover --maxpeers 0 --rpc --rpcapi 'web3,eth,admin,personal,shh,debug' --rpcaddr '127.0.0.1' --rpcport 8545 --rpccorsdomain '*' console\]
+	\item make sure blockchain is mining with \[miner.start(1)\]
+	\item run javascript file: node index.js
+\end{enumerate}	
+
+
+sources:
+
+\begin{enumerate}
+	\item solidity voting example, very comprehensive: http://solidity.readthedocs.io/en/develop/solidity-by-example.html
+	\item solidity events: https://media.consensys.net/technical-introduction-to-events-and-logs-in-ethereum-a074d65dd61e
+	\item how to see transaction details in eth console: https://ethereum.stackexchange.com/questions/6002/transaction-status/6003#6003
+	\item https://ethereum.stackexchange.com/questions/30600/struct-value-not-updatinga
+	\item view event logs: https://ethereum.stackexchange.com/questions/16313/how-can-i-view-event-logs-for-an-ethereum-contract
+\end{enumerate}
+
+
+
+\title{January 6th}
+
+What I will accomplish today:
+
+\begin{enumerate}
+	\item make front end to display contract, do all CRUD through front end
+	\item figure out how to run a minimal node application that interacts with the blockchain
+\end{enumerate}
+
+
+What I learned today:
+
+\begin{enumerate}
+	\item Using event listeners to do async call back from blockchain thread
+	\item Setting up a project properly with all its dependencies:	
+	\begin{enumerate}
+		\item 
+	\end{enumerate}
+\end{enumerate}
+
+
+sources:
+
+\begin{enumerate}
+	\item solidity voting example, very comprehensive: http://solidity.readthedocs.io/en/develop/solidity-by-example.html
+	\item solidity events: https://media.consensys.net/technical-introduction-to-events-and-logs-in-ethereum-a074d65dd61e
+	\item how to see transaction details in eth console: https://ethereum.stackexchange.com/questions/6002/transaction-status/6003#6003
+	\item https://ethereum.stackexchange.com/questions/30600/struct-value-not-updatinga
+	\item view event logs: https://ethereum.stackexchange.com/questions/16313/how-can-i-view-event-logs-for-an-ethereum-contract
+	\item setup boilerplate express application: http://expressjs.com/en/starter/generator.html
+\end{enumerate}
+
