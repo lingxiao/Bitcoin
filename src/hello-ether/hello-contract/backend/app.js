@@ -4,7 +4,7 @@
 	@date 1/3/2018
 */
 
-const pr         = require("../prelude");
+const pr         = require("../lib/prelude");
 const express    = require("express");
 const bodyParser = require("body-parser");
 

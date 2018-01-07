@@ -7,8 +7,9 @@
 // import modules
 var fs   = require("fs");
 var solc = require("solc");
-var pr   = require("../prelude")
 var Web3 = require("web3");
+var pr   = require("../lib/prelude");
+
 var web3 = new Web3();
 
 /**

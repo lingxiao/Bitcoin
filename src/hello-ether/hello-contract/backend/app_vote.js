@@ -32,7 +32,9 @@
                     and the pipe into the ethereum blockchain process
 
 */
-const pr         = require("../prelude");
+const pr         = require("../lib/prelude");
+const fs         = require("fs");
+const solc       = require("solc");
 const bodyParser = require("body-parser");
 const express    = require("express");
 const Web3       = require("web3");
@@ -40,10 +42,9 @@ const path       = require("path");
 
 var template_dir = "/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-contract/frontend"
 
-
 // launch web app and web3
 var web3 = new Web3();
-var app  = express()
+var app  = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.use(express.static("voting"))
@@ -54,12 +55,29 @@ app.get("/", (req, res) => res.send("hello world from vote application"));
 
 // right now you need to connect to the ethereum blockchain
 
+/**
+    fire up blockchain
+*/ 
+web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+/**
+    connecting to running ethereum node at prespecified port
+*/
+web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+/**
+    get accounts 
+*/
+var user0 = web3.eth.accounts[0];       // is coinbase
+var user1 = web3.eth.accounts[1];
+
+// hard code path to contract, and read contract
+var contract_path = "../solidity/contracts/SimpleStorage.sol"
+const input       = fs.readFileSync(contract_path)
+const output      = solc.compile(input.toString(), 1);
 
 
-
-
-
-
+console.log(output)
 
 
 
