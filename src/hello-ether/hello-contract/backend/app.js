@@ -29,8 +29,10 @@ var dir = "/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-cont
     strategy:
         1. serve simple html
         2. serve more complex html and do some event listeners
-        3. 
+        3. connect Voting.js to this somehow, make sure the ether-blockchain is updating
         4. make a express boiler plate app and migrate to it
+        5. integrate it into a bootstrap template for presentation sake
+        6. Think about how it could be integrated into a mobile phone
 */
 
 // launch app
@@ -40,7 +42,7 @@ app.use(express.static("voting"))
 
 // URL map to resource
 app.get("/"        , (req, res) => res.send("hello world!!!"             ));
-app.get("/about"   , (req, res) => res.send("hello from about page"       ));
+app.get("/about"   , (req, res) => res.send("hello from about page"      ));
 app.get("/contact" , (req, res) => res.send("contact me at mememe@me.com"));
 
 // now we want to serve an xxx.html 

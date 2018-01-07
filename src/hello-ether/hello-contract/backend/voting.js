@@ -89,29 +89,3 @@ contract.voteForCandidate.sendTransaction("Clinton", {from: user0});
 console.log("Obama's votes: "  , contract.totalVotesFor("Obama"))
 console.log("Clinton's votes: ", contract.totalVotesFor("Clinton"))
 
-
-// right now: focus on getting a webapp up where we interact with the blockchain on a
-// private server and basic web GUI
-/**
-	strategy: 
-		1. make a simple web app that serves information to port 800
-		2. if we are going to use the template, we should feed it fake stuff first
-		not from the blockchain
-		3. connect this web app to the program here, think about what part of this program
-			needs to be connected where
-		4. 
-
-*/ 
-
-
-
-
-
-
-
-
-
-
-
-
-
