@@ -12,7 +12,11 @@ var web3 = new Web3();
 /*
 	connecting to running ethereum node. Note the node must specify --rpcport 8545
 	note: after moving the files around it's now no longer connecting
-	stategy:
+	stategy: go through the whole thing from the top again:
+		-> new ethereum blockchain
+		-> new accounts
+		-> new port
+
 */
 web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
 

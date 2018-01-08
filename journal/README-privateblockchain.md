@@ -1,4 +1,6 @@
-How to install and run a private Ethereum Blockchain
+## source: http://www.digitalatomindustry.com/install-run-private-ethereum-blockchain/
+
+# How to install and run a private Ethereum Blockchain
 How to install and run an ethereum blockchain in virtualbox
 In this tutorial we’re going to cover how to install and run a private Ethereum blockchain on Ubuntu ( Lubuntu 17.04 64-bit) executed in Virtualbox.
 
@@ -43,18 +45,38 @@ If you are using Raspberry Pi, you must convert the difficulty and gasLimit to h
 We can use different value of “difficulty” to increase or decrease the velocity of mining. Setting a low value will increase the mining speed.
 Once the genesis.json has been created we have to initialize the blockchain. To do this we’re going to launch the following command from terminal:
 
+```
 geth --nodiscover --datadir <your_path>/myPrivateChain --networkid 123 init <your_path>/genesis.json
+```
+
+
 Flags:
 
 –nodiscover makes the node not discoverable from the network.
  –datadir flag sets the blockchain’s folder.
 –networkid sets the network identifier.
+
 Commands
 
 init bootstrap and initialize a new genesis block
 After the blockchain has been initialized we can connecting to the console by using the command:
 
-geth --identity "myNode" --nodiscover --maxpeers 0 --datadir <your_path>/myPrivateChain --networkid 123 console
+```
+geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 console
+```
+
+
+[my addition]
+
+if we want to expose a port for other process (ie node.js) to read from, do:
+
+```
+geth --identity "myNode" --datadir data --networkid 123 --nodiscover --maxpeers 0 --rpc --rpcapi 'web3,eth,admin,personal,shh,debug' --rpcaddr '127.0.0.1' --rpcport 8545 --rpccorsdomain '*' console
+```
+
+[end my addition]
+
+
 At this point we are connected to the Ethereum console. To test if our blockchain works properly, we can try to create two different accounts and execute a transaction between them so that 1 ether will be transferred from account_0 to account_1. Follow the instructions:
 
 personal.newAccount("password").
