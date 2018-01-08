@@ -1,3 +1,100 @@
+\title{December 29th}
+
+\subsection{Plan to accomplish today}
+
+\begin{itemize}
+	\item Build basic Etherium contract following tutorial from source 1. Have a basic prototype running on node.js
+	\item consider how to port it to a python version
+\end{itemize}
+
+\subsection{Today I learned: how to get started with Ethereum}
+
+
+\begin{itemize}
+	\item install Geth: so I can run ethereum client on computer
+		\begin{itemize}	
+			\item source: http://candidtim.github.io/ethereum/2016/03/24/ethereum-quick-start.html
+		\end{itemize}
+	% 
+	\item doing this \[geth --testnet --datadir ~/.ethereum-testnet\] will download entire testnet blockchain onto computer
+	% 
+	\item doing this: \[geth --fast --cache 1024\] downloads a compressed (?) version of blockchain
+	% 
+	\item Test RPC is a client for testing:
+	% 
+			testrpc is a Node.js based Ethereum client for testing and development. It uses ethereumjs to simulate full client behavior and make developing Ethereum applications much faster. It also includes all popular RPC functions and features (like events) and can be run deterministically to make development a breeze.
+	% 
+			While Geth is a full client in GO Language that you can use to connect to the real chain, or start your own testnet server.
+	% 
+			geth is the the command line interface for running a full ethereum node implemented in Go. It is the main deliverable of the Frontier Release
+	% 
+	\item mine blocks and earn ether on testnet
+	% 
+\end{itemize}
+
+
+\subsection{Sources to Consider}
+
+\begin{itemize}
+	\item The ethereum hello world: https://medium.com/@mvmurthy/ethereum-for-web-developers-890be23d1d0c
+	\item The ethereum book: https://ethereum.gitbooks.io/frontier-guide/content/ethereum.html
+	\item Trending Cryptocurrencies: https://docs.google.com/spreadsheets/d/1r7YFBWGshhXJwXzSUKT61SngmtR8OfvIA08kXe6WJw4/edit#gid=1048393921
+	\item 24 hour volume ranking for cryptocurrencies: https://coinmarketcap.com/exchanges/volume/24-hour/
+\end{itemize}	
+
+
+\title{December 30th}
+
+\subsection{Plan to accomplish today}
+
+\begin{itemize}
+	\item Build basic Etherium contract following tutorial from source 1. Have a basic prototype running on node.js
+	\item consider how to port it to a python version
+\end{itemize}
+
+\subsection{Today I learned: how to develop basic Ethereum contract with Geth}
+
+Note, lightweight etherium client development is incomplete, so mobile support is weak.
+
+\begin{itemize}
+	\item install geth: \[bash <(curl -L https://install-geth.ethereum.org)\], it's a go based ethereum virtual machine (EVM).
+	\item start geth \[geth --dev console\]
+	\item list accounts \[eth.accounts\]
+	\item create a test account \[personal.newAccount()\]
+	\item check balance: \[eth.getBalance(eth.accounts[i])\]
+	\item write a contract in Solidity, a Javascript-derived language. It can be compile to bytecode using \[sol-c\] compiler
+	\item sol-c compiler is installed globally with \[npm install -g solc\]
+	\item Three pieces of software to keep in mind when developing:
+ }}		\begin{itemize}
+			\item Ethereum Node (Geth server): Runs the node and maintain connection to rest of server, run by running \[geth console\]
+			\item Console: allow javascript command-line interface to the server. 
+			can open it with \[geth console\], or run \[geth\], then in a separate window do \[geth attach\] Note if we have \[hello.js\], then we can load it into geth console with \[loadScript("path/to/hello.js")\]
+			\item Ethereum Wallet (aka Mist): GUI for interfacing with wallets and deploying contracts. Will look for /Users/emunsing/Library/Ethereum/geth.ipc and if it does not find geth.ipc the Wallet will start up a server for the node.
+			\item JSON RPC API: lightweight format, it is what is communicated over the network. \[web3.js\] is a library that implents this API.
+		\end{itemize}
+ 	%
+ 	% 
+ 	% 
+ 	\item some interesting sources:
+ 		\begin{itemize}
+ 			\item could you get sued? https://docs.google.com/spreadsheets/d/1QxOV2dgxO3C_TyVE0-41ZwLlzPmB-EE1NNshJGuedCU/edit#gid=0
+ 			\item framework for regulation: https://coincenter.org/entry/framework-for-securities-regulation-of-cryptocurrencies
+ 			\item http://www.ethdocs.org/en/latest/ethereum-clients/choosing-a-client.html
+			\item https://ethereum.stackexchange.com/questions/566/how-to-write-my-first-solidity-hello-world-smart-contract
+			\item https://ethereum.org/greeter
+			\item https://ethereum.gitbooks.io/frontier-guide/content/contracts_and_transactions_intro.html
+			\item http://ecomunsing.com/tutorial-controlling-ethereum-with-python
+			\item https://www.npmjs.com/package/ethereumjs-testrpc
+ 		\end{itemize}
+\end{itemize}
+
+
+
+\title{December 31st}
+
+Today's goals: finish reading Ethereum documentation, write minimal contract and send it over the private network.
+
+
 \title{January 1st}
 
 Today's goals: 
@@ -139,6 +236,11 @@ What I will accomplish today:
 	\item figure out how to run a minimal node application that interacts with the blockchain
 \end{enumerate}
 
+What I accomplished today
+
+\begin{enumerate}
+	\item make front end display stuff on node.js
+\end{enumerate}
 
 What I learned today:
 
@@ -173,11 +275,22 @@ What I will accomplish today:
 	\item figure out how to run a minimal node application that interacts with the blockchain
 \end{enumerate}
 
+What I accomplished today
+
+\begin{enumerate}
+	\item POST from front end template and printed the stuff on the backend
+	\item 
+\end{enumerate}
+
 What I learned today:
 
 \begin{enumerate}
 	\item Using event listeners to do async call back from blockchain thread
 	\item connecting POST action from front end HTML to backend express.js app
+	\item how to properly install solidity (again): 
+		\begin{itemize}
+			\item foo
+		\begin{itemize}
 \end{enumerate}
 
 
