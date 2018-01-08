@@ -24,8 +24,9 @@
             -> need to know the canonical way to factorize the code into differnt files
 
         3. connect Voting.js to this somehow, make sure the ether-blockchain is updating
-            -> at this point we can do a simple voting.js connection
-                -> build one where we just vote for Obama
+            -> at this point we can do a simple simpleStorage.js
+                -> build one where we just display the current user's account, and it should go up as coins are mined
+                -> 
 
             -> we just have to know how various part of the thing interacts
                 -> there are two processes going on here, the node.js process

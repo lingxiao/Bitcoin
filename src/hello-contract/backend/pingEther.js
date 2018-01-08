@@ -2,24 +2,22 @@
 	@file: index.js
 	@author: Xiao Ling <lingxiao@seas.upenn.edu>
 	@date: 1/2/2018
-	@Use: setting up a private blockchain, mine for coins, and readBalance from javscript module after plugging 
-		  into the ethereum network
 */
 
 // import modules
+var pr   = require("../lib/prelude");
 var Web3 = require("web3");
 var web3 = new Web3();
 
 /*
 	connecting to running ethereum node. Note the node must specify --rpcport 8545
+	note: after moving the files around it's now no longer connecting
+	stategy:
 */
 web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
 
-console.log("Ethereum-NodeJS App started")
-console.log("Web3.js - API version: " + web3.version.api + " Node: " + web3.version.node.ethereum + "\n")
-
-// store hah of transaction sent
-var tranSent;
+console.log("Ethereum-NodeJS App started ...");
+// console.log("Web3.js - API version: " + web3.version.api + " Node: " + web3.version.node.ethereum + "\n")
 
 // get account address and print their account value
 // note we created two accounts earlier in the private blockchain
