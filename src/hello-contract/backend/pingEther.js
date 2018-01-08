@@ -8,8 +8,30 @@
 
 // import modules
 var pr   = require("../lib/prelude");
-var Web3 = require("web3");      // library that allow you to interact with remote ethereum code
-// var web3 = new Web3();
+var Web3 = require("web3");     
+
+
+// connect to etherum blockchain
+var web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+
+
+/**
+	Notes on web3 design decisions:
+
+	Ethereum as a blockchain has different levels of finality and therefore needs to 
+	return multiple “stages” of an action. To cope with requirement we return a “promiEvent” 
+	for functions like web3.eth.sendTransaction or contract methods. 
+	This “promiEvent” is a promise combined with an event emitter to allow acting on 
+	different stages of action on the blockchain, like a transaction.
+
+	PromiEvents work like a normal promises with added on, once and off functions. 
+	This way developers can watch for additional events like on “receipt” or “transactionHash”.
+*/ 
+
+
+
+
+
 
 /*
 	connecting to running ethereum node. Note the node must specify --rpcport 8545
@@ -23,7 +45,6 @@ var Web3 = require("web3");      // library that allow you to interact with remo
 	it seems like things are async now... maybe it's because you upgraded things?
 	you're running a different version of web3 than what's in the blog
 
-*/
 
 var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
@@ -42,4 +63,5 @@ console.log("================= printing balance ====================")
 console.log("account zero's balance is: " + web3.eth.getBalance(user_0)["c"][0])
 console.log("account one's balance is: " + web3.eth.getBalance(user_1)["c"][0])
 
+*/
  	

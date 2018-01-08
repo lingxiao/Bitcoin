@@ -116,7 +116,6 @@ app.get("/ping-ether", function(req, res){
 */ 
 console.log("user0: ", user0)
 
-
 // run the server
 app.listen(3000, () => console.log("web app listening on port 3000"));
 
