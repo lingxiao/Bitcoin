@@ -16,9 +16,16 @@ var web3 = new Web3();
 		-> new ethereum blockchain
 		-> new accounts
 		-> new port
+	conclusion: still not working ... 
+
+	it seems like things are async now... maybe it's because you upgraded things?
+	you're running a different version of web3 than what's in the blog
 
 */
-web3.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+var ether_port = new Web3.providers.HttpProvider("http://localhost:8545");
+
+web3.setProvider(ether_port);
 
 console.log("Ethereum-NodeJS App started ...");
 // console.log("Web3.js - API version: " + web3.version.api + " Node: " + web3.version.node.ethereum + "\n")
