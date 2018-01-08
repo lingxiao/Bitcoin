@@ -1,0 +1,177 @@
+ls
+let w = require("web3")
+w
+var w = require("web3")
+w
+web3
+eth.accounts
+eth.accounts[0]
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[`])
+eth.getBalance(eth.accounts[1])
+miner.setEtherbase(eith.accounts[0])
+miner.setEtherbase(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.getBalance(eth.accounts[0])
+miner.start(1)
+eth.accounts[0]
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+miner.setEtherbase(eth.accounts[0])
+miner.start(1)
+stop
+pause
+miner.stop()
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[1], value: web3.toWei(1, "ether")})
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:web3.toWei(1,"ether")}).
+eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:web3.toWei(1,"ether")})
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+web3.fromWei(eth.getBalance(eth.accounts[1]), "either")
+web3.fromWei(eth.getBalance(eth.accounts[1]), "ether")
+web3.fromWei(eth.getBalance(eth.accounts[0]), "ether")
+eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:web3.toWei(1,"ether")}).
+eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:web3.toWei(1,"ether")})
+eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:web3.toWei(10,"ether")})
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+miner.start(1)
+eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:web3.toWei(10,"ether")})
+eth.getBalance(eth.accounts[1])
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.getBalance(eth.accounts[0])
+miner.stop()
+eth.accounts
+loadScript("index.js")
+var Web3 = require("web3");
+var web3 = new Web3();
+web3
+Web3
+Web3()
+web3
+eth.accounts
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1]))
+eth.getBalance(eth.accounts[1])
+eth.getBalance(eth.accounts[1]))
+eth.getBalance(eth.accounts[0]))
+eth.getBalance(eth.accounts[0])
+ls
+1 + 1
+eth.accounts
+eth.balance(eth.accounts[0])
+eth.balance
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.accounts
+miner.start(1)
+miner.stop()
+eth.accounts
+miner.start(1)
+miner.stop()
+eth.accounts
+eth.accounts[0]
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.accounts
+eth.accounts[0]
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+miner.start(1)
+miner.stop()
+miner.start(1)
+miner.stop()
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+miners.start(1)
+miner.start(1)
+miners.stop()
+miner.stop()
+eth.accounts
+eth.getBalance(eth.accounts[0])
+eth.accounts
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.getBalance(eth.accounts[0])_
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+miner.start(1)
+miner.stop()
+eth.accounts[0]
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+console.log("hello world")
+eth.getTransaction
+eth.getTransactionReceipt
+ls
+eth.accounts
+eht.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+eth.getBalance(eth.accounts[0])
+var hash = 0x3279afa5915efc62ce5a1d707264ea762db101c5bf6c0ee6c1dc30154ff343fb contract=0x7a963273b3344A67990c75996399f62B78387061
+var hash = "0x3279afa5915efc62ce5a1d707264ea762db101c5bf6c0ee6c1dc30154ff343fb contract=0x7a963273b3344A67990c75996399f62B78387061"
+hash
+eth.getTransaction(hash)
+var hash = "0x3279afa5915efc62ce5a1d707264ea762db101c5bf6c0ee6c1dc30154ff343fb"
+hash
+eth.getTransaction(hash)
+eth.getTransactionReceipt(hash)
+debug.traceTransaction(hash)
+eth.getBlock("pending")
+eth.getBlock("pending").length
+eth.getBlock("pending").length()
+eth.getBlock("pending").transactions
+eth.getBlock("pending").transactions.length
+eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[1], value: web3.toWei(5, "ether")})
+eth.getBlock("pending").trans
+eth.getBlock("pending").transactions
+eth.getBlock("pending").transactions.length
+eth.getBlock("pending").transactions[0]
+debug.traceTransaction(hash)
+eth.getTransactionReceipt(hash)
+eth.getTransaction(hash)
+eth.pendingTransactions
+eth.pendingTransactions.length
+eth.pendingTransactions[0]
+miner.start(1)
+eth.pendingTransactions[0]
+eth.pendingTransactions
+hash
+eth.getTransaction(hash)
+eth.pendingTransactions
+miner.stop()
+miner.start(1)
+hash = "0x79625cdd035bac1d55dfb6c5f065cabaa9307390"
+eth.hashrate
+eth.getTransaction(0x79625cdd035bac1d55dfb6c5f065cabaa9307390)
+eth.getTransaction(hash)
+hash ="0x79625cdd035bac1d55dfb6c5f065cabaa9307390"
+eth.getTransaction(hash)
+eth.getTransaction("0x79625cdd035bac1d55dfb6c5f065cabaa9307390")
+eth.getBlock("pending")
+miner.stop()
+miner.start(1)
+miner.stop()
+miner.start(1)
+miner.stop()
+miner.start(1)
+miner.stop()
+miner.start(1)
+eth.accounts
+eth.accounts[0]
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[1])
+miner.start()
+miner.start(1)
+eth.accounts[0]
+eth.getBalance(eth.accounts[0])
+miner.start(1)
+miner.stop()
