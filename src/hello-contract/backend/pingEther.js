@@ -9,10 +9,13 @@
 // import modules
 var pr   = require("../lib/prelude");
 var Web3 = require("web3");     
+var Eth  = require("web3-eth");
 
 
 // connect to etherum blockchain
-var web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+var ether_port = 'http://localhost:8545'
+var web3       = new Web3(new Web3.providers.HttpProvider(ether_port));
+var eth        = new Eth(ether_port);   // note this is also accessible through web3.eth
 
 
 /**
@@ -27,6 +30,90 @@ var web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
 	PromiEvents work like a normal promises with added on, once and off functions. 
 	This way developers can watch for additional events like on “receipt” or “transactionHash”.
 */ 
+
+/**
+	note here we store the promise in the acctPromise so we always have it. 
+	this is akin to:
+
+	web3.eth.getAccounts() >>= \accts => log accts >> return accts >= \accts => do more stuff.
+*/ 
+let acctPromise = web3.eth.getAccounts().then(function(accts){
+	console.log("printing account: ", accts)
+	return accts
+});
+
+
+/**
+	now we are going to assert that the accts 
+	value has been passed
+*/
+acctPromise.then(function(accts){
+
+	console.log("assert accts still there: ", accts);
+	return accts
+
+}).catch(err => {
+
+	console.log("error: ", err)
+
+});
+
+/**
+	Now we use output of previous computation 
+	to get the value of the next one, note the nested 
+	callback. and then return the value
+*/ 
+let user_0_balance = acctPromise.then(function(accts){
+
+	var balance = web3.eth.getBalance(accts[0]).then(function(bal){
+
+		console.log("balance: ", bal)
+		return {"user": accts[0], "balance": bal}
+
+	});
+
+	return balance;
+});
+
+
+/**
+	now wwe read this balance, and note its type and value:
+*/ 
+user_0_balance.then(function(tup){
+
+	console.log("callback: ", tup);
+
+	console.log("type of output: ", pr.typeOf(tup["balance"]));      // :: string
+	console.log("do arithmetic: ", tup["balance"] / 2) // can do arithmateic
+	return tup;
+
+});
+
+
+/**
+	note how the value can be passed around arbitraritly                                  
+*/
+user_0_balance.then(function(tup){
+
+	console.log("next callback on user 0 balance: ", tup)
+
+});
+
+/**
+	Now let's do a live listener that runs forever and 
+	reflects the updates in the blockchain
+*/ 
+// web3.eth.subscribe
+
+
+
+
+
+
+
+
+
+
 
 
 

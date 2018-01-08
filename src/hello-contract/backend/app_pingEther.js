@@ -108,8 +108,8 @@ app.get("/ping-ether", function(req, res){
             - have to learn it eventually anyways
 
     plan:       
-        1. install web3 1.0.0
-        2. figure out how to access user account information asyncronously
+        1. install web3 1.0.0 --> done
+        2. figure out how to access user account information asyncronously -> done
         3. figure out subscribers and print to console
         4. figure out subscrribers and print to front end html
 
@@ -118,6 +118,9 @@ console.log("user0: ", user0)
 
 // run the server
 app.listen(3000, () => console.log("web app listening on port 3000"));
+
+
+
 
 
 
