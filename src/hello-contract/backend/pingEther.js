@@ -102,20 +102,17 @@ user_0_balance.then(function(tup){
 /**
 	Now let's do a live listener that runs forever and 
 	reflects the updates in the blockchain
+
+	problem: subscribe is actually not implemented
+
+	1. figure out all the events it'll subscribe to
+	2. subscribe to each one and print to console what it does
+	3. 
 */ 
-// web3.eth.subscribe
-
-
-
-
-
-
-
-
-
-
-
-
+web3.eth.subscribe("pendingTransactions", function(err, result){
+	if (err){ console.log(err) }
+	else { console.log("result: ", result) }
+});
 
 
 
