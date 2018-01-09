@@ -107,12 +107,14 @@ user_0_balance.then(function(tup){
 
 	geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 --ws --wsport 8546 --wsorigins "*" console
 
+	other events include:
+		- syncing
+
 */ 
 var foo = web3.eth.subscribe("newBlockHeaders", function(err, result){
 	if (err){ console.log(err) }
 	else { console.log("result: ", result) }
 });
-
 
 
 
