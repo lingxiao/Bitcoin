@@ -9,13 +9,13 @@
 // import modules
 var pr   = require("../lib/prelude");
 var Web3 = require("web3");     
-var Eth  = require("web3-eth");
-
 
 // connect to etherum blockchain
-var ether_port = 'http://localhost:8545'
-var web3       = new Web3(new Web3.providers.HttpProvider(ether_port));
-var eth        = new Eth(ether_port);   // note this is also accessible through web3.eth
+// http port
+// var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+
+// websocket port
+var web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
 
 
 /**
@@ -102,14 +102,13 @@ user_0_balance.then(function(tup){
 /**
 	Now let's do a live listener that runs forever and 
 	reflects the updates in the blockchain
+	
+	note we need to open a websocket connection in geth, not http:
 
-	problem: subscribe is actually not implemented
+	geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 --ws --wsport 8546 --wsorigins "*" console
 
-	1. figure out all the events it'll subscribe to
-	2. subscribe to each one and print to console what it does
-	3. 
 */ 
-web3.eth.subscribe("pendingTransactions", function(err, result){
+var foo = web3.eth.subscribe("newBlockHeaders", function(err, result){
 	if (err){ console.log(err) }
 	else { console.log("result: ", result) }
 });

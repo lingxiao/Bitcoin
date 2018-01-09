@@ -47,3 +47,13 @@ miner.stop(1)
 miner.start(1)
 miner.stop(1)
 miner.stop()
+ls
+eth.accounts
+eth.getBalance(eth.accounts[0])
+eth.accouns
+eth.accounts
+eth.getBalance(eth.accounts[0])
+geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 --ws --wsport 8545 --wsaddr 0.0.0.0 --wsorigins "*" console
+eth.accounts
+miner.start(1)
+miner.stop()

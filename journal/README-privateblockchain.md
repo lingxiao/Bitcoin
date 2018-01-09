@@ -63,10 +63,10 @@ After the blockchain has been initialized we can connecting to the console by us
 
 ```
 geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 console
+
 ```
 
-
-[my addition]
+[my addition to open a port for node.js process]
 
 if we want to expose a port for other process (ie node.js) to read from, do:
 
@@ -74,7 +74,15 @@ if we want to expose a port for other process (ie node.js) to read from, do:
 geth --identity "myNode" --datadir data --networkid 123 --nodiscover --maxpeers 0 --rpc --rpcapi 'web3,eth,admin,personal,shh,debug' --rpcaddr '127.0.0.1' --rpcport 8545 --rpccorsdomain '*' console
 ```
 
-[end my addition]
+if we want to expose a websocket instead of http connection:
+
+```
+geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 --ws --wsport 8546 --wsorigins "*" console
+```
+
+[end my addition to open a port for node.js process]
+
+
 
 
 At this point we are connected to the Ethereum console. To test if our blockchain works properly, we can try to create two different accounts and execute a transaction between them so that 1 ether will be transferred from account_0 to account_1. Follow the instructions:
