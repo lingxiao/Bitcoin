@@ -68,7 +68,10 @@ app.get("/", (req, res) => res.send("hello world from ping ether application"));
     display info to the front
 
     hypothesis: this does update on each refresh -> correct:
-    now need to open a listener to the blockchain so that it updates automatically
+        - possible reason why: res.end is only fired once ... and never fires again
+        - one way to simplify a problem, open up a websocket to a dummy process that broadcassts data
+        - then listen to socket and figure out how to live update
+
 */ 
 app.get("/ping-ether", function(req, res){
 
@@ -108,8 +111,21 @@ app.get("/ping-ether", function(req, res){
         }
 
     });
-
 });
+
+/**
+    plan:
+        0. first clarify the problem ... 
+        1. open a dummy process that outputs stuff
+        2. hook to websocket and print the info on the screen
+    goal:
+        1. learn how to interact with a websocket
+        2. 
+*/
+
+
+
+
 
 // run the server
 app.listen(3000, () => console.log("web app listening on port 3000"));
