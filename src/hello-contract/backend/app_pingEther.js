@@ -3,10 +3,7 @@
 	@author: Xiao Ling <lingxiao@seas.upenn.edu>
 	@date: 1/7/2018
 	@Note: web application that interacts with ethereum, pings blockchain and returns data
-*/
 
-
-/**
     set up server using express
 
     problem: right now there is a package setup problem... may behoove
@@ -55,28 +52,16 @@
         4. figure out subscrribers and print to front end html -> to do today
 
 */ 
-
-const pr         = require("../lib/prelude");
-const fs         = require("fs");
-const solc       = require("solc");
-const bodyParser = require("body-parser");
-const express    = require("express");
-const Web3       = require("web3");
-const path       = require("path");
-
-var template_dir = "/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-ether/hello-contract/frontend"
+const pr      = require("../lib/prelude");
+const express = require("express");
+const Web3    = require("web3");
 
 // launch web app and web3
-var web3 = new Web3();
 var app  = express();
-app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use(express.static("voting"))
 
 // URL map to resource
 app.get("/", (req, res) => res.send("hello world from ping ether application"));
-
-
 
 /**
     display information in the front, so this shows that we can 
@@ -89,19 +74,46 @@ app.get("/ping-ether", function(req, res){
 
     // var coins = web3.eth.getBalance(user0)["c"][0];
     // res.send("user account ID: " + user0 + "\n with networth: " + coins);
-    console.log("pinged ether, no information yet")
+    // res.send("pinged ether, no information yet " + 123212)
+
+    /**
+        todo: refactor this block of code in an acceptable way
+        after the live udpdate is done, it's possible to do some front end interaction
+    */ 
+    var web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
+
+    /**
+        this will only fire when new blocks are added, so when transactions
+        are confirmed and/or new money is minted
+    */ 
+    var event_newBlockHeaders = web3.eth.subscribe("newBlockHeaders", function(err, result){
+
+        if (err){ 
+         
+            console.log(err);
+
+        } else {
+
+            let acctPromise = web3.eth.getAccounts().then(function(accts){
+
+                let balance = web3.eth.getBalance(accts[0]).then(function(bal){
+
+                    console.log("user: ", accts[0]);
+                    console.log("balance: ", bal);
+
+                    res.end("new balance for user: " + bal)
+
+                });
+
+            });
+        }
+
+    });
 
 });
 
 
-console.log("user0: ", user0)
-
 // run the server
 app.listen(3000, () => console.log("web app listening on port 3000"));
-
-
-
-
-
 
 

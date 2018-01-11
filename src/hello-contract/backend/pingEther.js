@@ -112,6 +112,7 @@ user_0_balance.then(function(tup){
 		- logs
 */ 
 var event_newBlockHeaders = web3.eth.subscribe("newBlockHeaders", function(err, result){
+
 	if (err){ console.log(err) }
 
 
