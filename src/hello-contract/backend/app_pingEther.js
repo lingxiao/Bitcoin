@@ -100,7 +100,6 @@ app.get("/ping-ether", function(req, res){
 
                     console.log("user: ", accts[0]);
                     console.log("balance: ", bal);
-
                     res.end("new balance for user: " + bal)
 
                 });
@@ -112,8 +111,6 @@ app.get("/ping-ether", function(req, res){
 
 });
 
-
 // run the server
 app.listen(3000, () => console.log("web app listening on port 3000"));
-
 
