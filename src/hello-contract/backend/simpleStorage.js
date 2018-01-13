@@ -53,6 +53,7 @@ const Contract = web3.eth.contract(abi_);
 
 /**
 	now create an instance of the contract. XXXX.new deploys the contract on
+
 	the block chain
 
 	first unlock account for 1500000 seconds
@@ -68,7 +69,6 @@ var deployed_contract = Contract.new({data : "0x" + bytecode    			// contract i
 		  	                       , from : user0              			// ID the person who deployed the contract for the blockchain
 	      		                   , gas  : 400000             			// price to pay to deploy the code onto the blockchain user0's ether account will be used to buy 400000 units of gas, price of gas is  set by the network
 	              		     	   })
-
 
  /** 
  	note, should wait till address is confirmed by the blockchian before running this

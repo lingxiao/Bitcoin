@@ -10,10 +10,9 @@ import * as express   from 'express';
 import * as http      from 'http';
 import * as WebSocket from 'ws';
 
-const app    = express();
-const server = http.createServer();
+const app       = express();
+const server    = http.createServer();
 const ws_server = new WebSocket.Server({ server });
-
 
 /**
 	@Instructions: 
@@ -21,17 +20,15 @@ const ws_server = new WebSocket.Server({ server });
 		2. Navigate to chrome-extension://pfdhoblngboilpfeibdedpjgfnlcodoo/index.html and set URL to 
 
 	- so we have a websocket server that broadcasts on channel 8999
-	- now do one that outputs 
-
-
+	- now do one that outputs stuff on repeat forever
 */
 ws_server.on('connection', (ws: WebSocket) => {
 
 	// connection is up, add simple event:
 	ws.on('message', (message: string) => {
 
-			console.log('received: ' + message);
-			ws.send(`hello, you sent -> ${message}`);
+		console.log('received: ' + message);
+		ws.send(`hello, you sent -> ${message}`);
 
 	});
 
@@ -44,3 +41,4 @@ ws_server.on('connection', (ws: WebSocket) => {
 server.listen(8999, () => {
 	console.log(`Server started on port ${server.address().port}`);
 });
+

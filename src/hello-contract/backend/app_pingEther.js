@@ -121,9 +121,11 @@ app.get("/ping-ether", function(req, res){
     goal:
         1. learn how to interact with a websocket
         2. 
+
+    broader strategy:
+        1. read as much as you can about building a minimal event loop -> socket listener -> updating app
+        2. build it
 */
-
-
 
 
 
