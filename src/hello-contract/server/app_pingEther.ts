@@ -54,36 +54,40 @@
 // const pr      = require("../lib/prelude");
 // const express = require("express");
 // const Web3    = require("web3");
-import * as Web3    from 'web3'     ; 
-import * as express from 'express'  ;
-const pr = require("../lib/prelude");
+import * as Web3     from 'web3'     ; 
+import * as express  from 'express'  ;
+import * as socketIO from 'socket.io';
+import * as http      from 'http'    ;
+const pr = require("../lib/prelude") ;
+
+const CLIENT_PATH = '/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-contract/client';
 
 // launch web app and web3
-var app  = express();
-
-// URL map to resource
-app.get("/", (req, res) => res.send("hello world from ping ether application"));
-
-/**
-    this is incorrect, need to use websockets
-*/
-app.get('/inject', (req, res) => {
-
-    res.write("this is the front end on load...")
-
-    setInterval(() => {
-
-        // console.log("fire")
-        res.write(`hello world ${Math.floor(Math.random()*100)}`);
+var app    = express();
+var server = http.Server(app);
+var io     = socketIO(server);
 
 
-    }, 10000);
+app.get('/', (req,res) => {
+
+    console.log('at home page')
+    // res.send('HOME!')
+    res.sendFile(CLIENT_PATH + '/index.html');
 
 });
 
+server.listen(3000, () => {
 
+    console.log('listening on 30001')
 
-app.listen(3000, () => console.log("web app listening on port 3000"));
+});
 
+setInterval(() => {
+
+    var msg = `Random message from backend with signature ${Math.floor(Math.random()*100)}`
+    io.emit('message', msg)
+    console.log("emitted message: "+ msg)
+
+}, 5000);
 
 
