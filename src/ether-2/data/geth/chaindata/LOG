@@ -375,3 +375,10 @@
 21:46:40.338333 version@stat F·[1 1] S·287KiB[49KiB 238KiB] Sc·[0.25 0.00]
 21:46:40.339875 db@janitor F·4 G·0
 21:46:40.339916 db@open done T·13.964538ms
+=============== Jan 14, 2018 (EST) ===============
+21:11:02.777818 table@compaction L0·1 -> L1·1 S·287KiB Q·8580
+21:11:02.804160 table@build created L1@87 N·4808 S·275KiB "\x00\x0e\xea..Y\x92(,v2465":"\xff\xf7\x9f..J\x03\x88,v3818"
+21:11:02.805980 version@stat F·[0 1] S·275KiB[0B 275KiB] Sc·[0.00 0.00]
+21:11:02.806804 table@compaction committed F-1 S-12KiB Ke·0 D·378 T·28.103738ms
+21:11:02.807529 table@remove removed @84
+21:11:02.808457 table@remove removed @83

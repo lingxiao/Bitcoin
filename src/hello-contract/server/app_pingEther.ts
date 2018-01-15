@@ -62,32 +62,73 @@ const pr = require("../lib/prelude") ;
 
 const CLIENT_PATH = '/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-contract/client';
 
-// launch web app and web3
 var app    = express();
 var server = http.Server(app);
 var io     = socketIO(server);
+var web3   = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
 
 
 app.get('/', (req,res) => {
-
-    console.log('at home page')
-    // res.send('HOME!')
-    res.sendFile(CLIENT_PATH + '/index.html');
-
+    res.send("HOME!")
 });
 
-server.listen(3000, () => {
-
-    console.log('listening on 30001')
-
+// subscriber to first process
+app.get('/index-1', (req,res) => {
+    res.sendFile(CLIENT_PATH + '/index-1.html');
 });
 
+// subscriber to second process
+app.get('/index-2', (req,res) => {
+    res.sendFile(CLIENT_PATH + '/index-2.html');
+});
+
+// a dummy process that is meant to dummy what's on the backend
 setInterval(() => {
 
     var msg = `Random message from backend with signature ${Math.floor(Math.random()*100)}`
-    io.emit('message', msg)
+    io.emit('message-2', msg)
     console.log("emitted message: "+ msg)
 
 }, 5000);
+
+// web3 account
+web3.eth.getAccounts().then(accounts => {
+
+    display_account(accounts)
+})
+
+function display_account(accounts){
+
+    var user_0 = accounts[0]
+
+    web3.eth.subscribe('newBlockHeaders', (err, ret) => {
+
+        if (err){ 
+            
+            console.log("error: ", err)
+
+        } else {
+
+            web3.eth.getBalance(user_0).then(bal => {
+
+                var msg = 'Balance for user ' + user_0 + ' is ' + bal  // todo make this typesafe
+                io.emit('message-1', msg)
+                console.log('emitted message: ', msg)
+
+            })
+        }
+
+    })
+
+}
+
+
+// use this instead of app.listen
+server.listen(3000, () => {
+
+    console.log('listening on 3000')
+
+});
+
 
 
