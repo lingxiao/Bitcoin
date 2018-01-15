@@ -50,7 +50,6 @@
         2. figure out how to access user account information asyncronously -> done
         3. figure out subscribers and print to console -> done
         4. figure out subscrribers and print to front end html -> to do today
-
 */ 
 const pr      = require("../lib/prelude");
 const express = require("express");
@@ -58,7 +57,6 @@ const Web3    = require("web3");
 
 // launch web app and web3
 var app  = express();
-
 
 // URL map to resource
 app.get("/", (req, res) => res.send("hello world from ping ether application"));
@@ -72,13 +70,17 @@ app.get("/", (req, res) => res.send("hello world from ping ether application"));
         - one way to simplify a problem, open up a websocket to a dummy process that broadcassts data
         - then listen to socket and figure out how to live update
 
+    maybe the answer is to put it in the front end ???
+
 */ 
 app.get("/ping-ether", function(req, res){
+
+
+    res.send("getting balance for users ...")
 
     // var coins = web3.eth.getBalance(user0)["c"][0];
     // res.send("user account ID: " + user0 + "\n with networth: " + coins);
     // res.send("pinged ether, no information yet " + 123212)
-
     /**
         todo: refactor this block of code in an acceptable way
         after the live udpdate is done, it's possible to do some front end interaction
@@ -90,7 +92,7 @@ app.get("/ping-ether", function(req, res){
         are confirmed and/or new money is minted
     */ 
     var event_newBlockHeaders = web3.eth.subscribe("newBlockHeaders", function(err, result){
-
+    
         if (err){ 
          
             console.log(err);
@@ -103,15 +105,61 @@ app.get("/ping-ether", function(req, res){
 
                     console.log("user: ", accts[0]);
                     console.log("balance: ", bal);
-                    res.end("new balance for user: " + bal)
+                    
+                    // assert we can write something to the front
+                    // res.writeHead(200, )
+
+
 
                 });
 
             });
         }
-
     });
+
 });
+
+// bit of code to inject html to frontend on periodic update
+app.get('/inject', (req, res) => {
+
+    res.send("this is the front end on load")
+
+
+});
+
+
+/**
+    we need to test something:
+    run the loop outside and see if we can ping the front with
+    random stuff
+*/
+// var web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
+
+// var event_newBlockHeaders = web3.eth.subscribe("newBlockHeaders", function(err, result){
+
+//     if (err){ 
+     
+//         console.log(err);
+
+//     } else {
+
+//         let acctPromise = web3.eth.getAccounts().then(function(accts){
+
+//             let balance = web3.eth.getBalance(accts[0]).then(function(bal){
+
+//                 console.log("user: ", accts[0]);
+//                 console.log("balance: ", bal);
+//                 // res.end("new balance for user: " + bal)
+
+//             });
+
+//         });
+//     }
+// });
+
+
+
+
 
 /**
     plan:
@@ -131,4 +179,8 @@ app.get("/ping-ether", function(req, res){
 
 // run the server
 app.listen(3000, () => console.log("web app listening on port 3000"));
+
+
+
+
 
