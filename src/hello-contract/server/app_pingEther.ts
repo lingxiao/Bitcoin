@@ -14,46 +14,23 @@
     what if I installed it here.. get it working here. and then transfer over?
     
     strategy:
+
         1. serve simple html    -> done
-        2. serve more complex html and do some event listeners 
+
+        2. serve more complex html and do some event listeners  -> done
             -> need a plug in the html
             -> need to serve the html, and attach listeners to each plug
-            -> need to know the canonical way to factorize the code into differnt files
 
         3. connect Voting.js to this somehow, make sure the ether-blockchain is updating
             -> at this point we can do a simple simpleStorage.js
-                -> build one where we just display the current user's account, and it should go up as coins are mined
-                -> 
+            -> build one where we just display the current user's account, and it should go up as coins are mined
 
             -> we just have to know how various part of the thing interacts
                 -> there are two processes going on here, the node.js process
                     and the pipe into the ethereum blockchain process
 
-    now let's open a live pipe to the blockchain so the amount of coins mined is cointinously updated
-
-    1. first it makes sense to open a live pipe that constant updates => maybe read the docs to see what's already there?
-    2. problem: the API seems to be incomplete, things exist but are not implemented??
-    3. possible solution: 
-        - roll your own
-            pros: use existing lib 
-            cons: would it behave in ways that you don't understand?
-        - use web3 1.0.0.
-            pros: may be tested by pros
-            cons: API will most likely change, all your current stuff will break 
-
-        decision: use beta and learn the new API since:
-            - subscriber already implemented
-            - have to learn it eventually anyways
-
-    plan:       
-        1. install web3 1.0.0 --> done
-        2. figure out how to access user account information asyncronously -> done
-        3. figure out subscribers and print to console -> done
-        4. figure out subscrribers and print to front end html -> to do today
+        3. need to know the canonical way to factorize the code into differnt files -
 */ 
-// const pr      = require("../lib/prelude");
-// const express = require("express");
-// const Web3    = require("web3");
 import * as Web3     from 'web3'     ; 
 import * as express  from 'express'  ;
 import * as socketIO from 'socket.io';
@@ -82,6 +59,32 @@ app.get('/index-2', (req,res) => {
     res.sendFile(CLIENT_PATH + '/index-2.html');
 });
 
+app.get('/transfer-fund', (req, res) => {
+
+    /**
+        on load, unlock account and transfer fund
+    */
+    web3.eth.getAccounts().then(accounts => { transfer_funds(accounts) });
+
+    res.send("transfering fund ... ")
+
+
+});
+
+function transfer_funds(accounts){
+
+    var sender   = accounts[0];
+    var receiver = accounts[1];
+
+    web3.eth.personal.unlockAccount(sender  , 'password-1');
+    web3.eth.personal.unlockAccount(receiver, 'password-2');
+
+    web3.eth.sendTransaction({from: sender, to: receiver, value: 500000});
+
+    console.log("sent ether from " + sender + " to " + receiver);
+
+}
+
 // a dummy process that is meant to dummy what's on the backend
 setInterval(() => {
 
@@ -95,8 +98,21 @@ setInterval(() => {
 web3.eth.getAccounts().then(accounts => {
 
     display_account(accounts)
+
 })
 
+/**
+    now we need to do a simple transaction from the front that updates to the back, strategy:
+
+    1. do the transaction in the backend with web3
+        where i am right now: cannot unlock account to transfer on ether
+            personal.unlockAccount(user, passord, time)
+            eths.sendTransaction({from: sender, to: receiver, value: amt})
+
+        solution: forgot to start mining
+
+    2. move the api to the front
+*/    
 function display_account(accounts){
 
     var user_0 = accounts[0]
@@ -124,11 +140,5 @@ function display_account(accounts){
 
 
 // use this instead of app.listen
-server.listen(3000, () => {
-
-    console.log('listening on 3000')
-
-});
-
-
+server.listen(3000, () => { console.log("listening on 3000") });
 
