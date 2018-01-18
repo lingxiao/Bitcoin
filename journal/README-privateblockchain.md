@@ -77,12 +77,12 @@ geth --identity "myNode" --datadir data --networkid 123 --nodiscover --maxpeers 
 if we want to expose a websocket instead of http connection:
 
 ```
-geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 --ws --wsport 8546 --wsorigins "*" console
-```
+ geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --wsapi db,eth,net,web3,personal,web3  --networkid 123 --ws --wsport 8546 --wsorigins "*"  console
+ ```
+
+note we have to specify ```wspai``` so that we can access the accounts from ```node.js```
 
 [end my addition to open a port for node.js process]
-
-
 
 
 At this point we are connected to the Ethereum console. To test if our blockchain works properly, we can try to create two different accounts and execute a transaction between them so that 1 ether will be transferred from account_0 to account_1. Follow the instructions:

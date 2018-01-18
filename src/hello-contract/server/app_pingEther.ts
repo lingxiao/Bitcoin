@@ -22,10 +22,10 @@
             -> need to serve the html, and attach listeners to each plug
 
         3. connect Voting.js to this somehow, make sure the ether-blockchain is updating
-            -> at this point we can do a simple simpleStorage.js
-            -> build one where we just display the current user's account, and it should go up as coins are mined
+            -> at this point we can do a simple simpleStorage.js   -> not done
+            -> build one where we just display the current user's account, and it should go up as coins are mined -> done
 
-            -> we just have to know how various part of the thing interacts
+            -> we just have to know how various part of the thing interacts -> done
                 -> there are two processes going on here, the node.js process
                     and the pipe into the ethereum blockchain process
 
@@ -65,12 +65,15 @@ app.get('/transfer-fund', (req, res) => {
         on load, unlock account and transfer fund
     */
     web3.eth.getAccounts().then(accounts => { transfer_funds(accounts) });
-
     res.send("transfering fund ... ")
-
 
 });
 
+/**
+    @Use: Given list of user accounts of lenght at least two, transfer
+          ether from user-1 to user-2. where user-1 is coinbase
+    @Input: accounts :: [String]
+*/
 function transfer_funds(accounts){
 
     var sender   = accounts[0];
@@ -81,7 +84,7 @@ function transfer_funds(accounts){
 
     web3.eth.sendTransaction({from: sender, to: receiver, value: 500000});
 
-    console.log("sent ether from " + sender + " to " + receiver);
+    console.log("****** sent ether from " + sender + " to " + receiver + " **********");
 
 }
 
@@ -96,49 +99,49 @@ setInterval(() => {
 
 // web3 account
 web3.eth.getAccounts().then(accounts => {
-
     display_account(accounts)
+});
 
-})
 
-/**
-    now we need to do a simple transaction from the front that updates to the back, strategy:
-
-    1. do the transaction in the backend with web3
-        where i am right now: cannot unlock account to transfer on ether
-            personal.unlockAccount(user, passord, time)
-            eths.sendTransaction({from: sender, to: receiver, value: amt})
-
-        solution: forgot to start mining
-
-    2. move the api to the front
-*/    
 function display_account(accounts){
 
-    var user_0 = accounts[0]
+    var user_0 = accounts[0];
+    var user_1 = accounts[1];
 
     web3.eth.subscribe('newBlockHeaders', (err, ret) => {
 
-        if (err){ 
+        if (err) { 
             
             console.log("error: ", err)
 
         } else {
 
-            web3.eth.getBalance(user_0).then(bal => {
+            /**
+                todo: get rid of this nested callback
+            */ 
+            web3.eth.getBalance(user_0).then(bal_0 => {
 
-                var msg = 'Balance for user ' + user_0 + ' is ' + bal  // todo make this typesafe
-                io.emit('message-1', msg)
-                console.log('emitted message: ', msg)
+                web3.eth.getBalance(user_1).then(bal_1 => {
+
+                    /**
+                        todo: make this a JSON
+                    */
+                    var msg1 = 'Balance for user ' + user_0 + ' is ' + bal_0
+                    var msg2 = 'Balance for user ' + user_1 + ' is ' + bal_1
+                    var msg  = msg1 + '\n\n' + msg2
+                    io.emit('message-1', msg)
+                    console.log('emitted message: ', msg)
+
+                })
 
             })
+
         }
 
     })
-
 }
-
 
 // use this instead of app.listen
 server.listen(3000, () => { console.log("listening on 3000") });
+
 
