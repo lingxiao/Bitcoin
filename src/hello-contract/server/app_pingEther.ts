@@ -88,6 +88,7 @@ function transfer_funds(accounts){
 
 }
 
+
 // a dummy process that is meant to dummy what's on the backend
 setInterval(() => {
 
@@ -96,6 +97,7 @@ setInterval(() => {
     console.log("emitted message: "+ msg)
 
 }, 5000);
+
 
 // web3 account
 web3.eth.getAccounts().then(accounts => {
@@ -143,5 +145,3 @@ function display_account(accounts){
 
 // use this instead of app.listen
 server.listen(3000, () => { console.log("listening on 3000") });
-
-
