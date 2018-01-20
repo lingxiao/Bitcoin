@@ -44,7 +44,6 @@ var server = http.Server(app);
 var io     = socketIO(server);
 var web3   = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
 
-
 app.get('/', (req,res) => {
     res.send("HOME!")
 });
@@ -60,13 +59,11 @@ app.get('/index-2', (req,res) => {
 });
 
 app.get('/transfer-fund', (req, res) => {
-
     /**
         on load, unlock account and transfer fund
     */
     web3.eth.getAccounts().then(accounts => { transfer_funds(accounts) });
     res.send("transfering fund ... ")
-
 });
 
 /**
@@ -85,7 +82,6 @@ function transfer_funds(accounts){
     web3.eth.sendTransaction({from: sender, to: receiver, value: 500000});
 
     console.log("****** sent ether from " + sender + " to " + receiver + " **********");
-
 }
 
 
@@ -95,7 +91,6 @@ setInterval(() => {
     var msg = `Random message from backend with signature ${Math.floor(Math.random()*100)}`
     io.emit('message-2', msg)
     console.log("emitted message: "+ msg)
-
 }, 5000);
 
 

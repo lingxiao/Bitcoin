@@ -579,9 +579,11 @@ What I will accomplish by the meeting on the 24th of January:
 	\item make a simple simulation game where:
 		\begin{enumerate}
 			\item characters are spawned
-			\item behaviors are passed between them
-			\item fake validation is done 
-			\item coins are mined and passed around
+			\item transactions are passed between some arbitrary subset of adjacect vertices
+			\item blackbox validator will validate a percentage of transactions  -> validation mining
+			\item blackbox evaluation function will assign coins to faithful transactiions -> social mining payoff
+			\item coins will have a certain amount of time to maturity
+			\item an arbitary subset of players will ask for favors using coins they are given
 		\end{enumerate}
 	\item display the game somehow on an online portal
 \end{enumerate}
@@ -589,19 +591,29 @@ What I will accomplish by the meeting on the 24th of January:
 What I will accomplish today:
 
 \begin{enumerate}
-	\item figure out the typescript application standard directory mess
-		decision: is typescript too heavy?
-		if I start w/ typescript will it help me down the line as an investment?
-	\item install sigmajs
-	\item figure out the API enough to make a basic graph
+	\item figure out the typescript application standard directory mess - done
+		decision: is typescript too heavy? - done
+		if I start w/ typescript will it help me down the line as an investment?item -done
+	\item find the simplest structure for things - done
+	\item install sigmajs  - done
+	\item figure out the API enough to make a basic graph - todo now
 	\item write plug-in so I can specify the graph parameters
 	\item write plug-in so I can specify disconnected graphs and connect them arbitrarily
 \end{enumerate}
 
+what make sense today is if I leave with a reasonable app where on click,
+a graphs is spawned. so:
+	- get one graph to diplay on page, so load the min.js
+	- figure out the API so that I can do arbitrary graphs
+	
+
+
 What I accomplished today:
 
 \begin{enumerate}
-	\item so far nothing, started a express.js project
+	\item set up express.js + typescript app
+	\item installed sigma.js lib and briefly saw the API
+	\item 
 \end{enumerate}
 
 Sources:
@@ -612,4 +624,22 @@ Sources:
 	\item express library: http://brianflove.com/2016/11/08/typescript-2-express-node/
 	\item https://github.com/jacomyal/sigma.js/blob/master/README.md
 	\item simple websocket example: https://stackoverflow.com/questions/9914816/what-is-an-example-of-the-simplest-possible-socket-io-example
+	\item full stack DAPP: https://medium.com/@mvmurthy/full-stack-hello-world-voting-ethereum-dapp-tutorial-part-1-40d2d0d807c2
 \end{enumerate}
+
+
+Meeting topics
+
+\begin{enumerate}
+	\item Fix the protocol
+	\item Fix the sections of the paper and assign them to each person with ownership
+	\item Fix the direction: monetize or not
+	\item Fix the Name and overall brand image
+	\item Assign deadline for professional headshots
+	\item Assign roles within the organization
+	\item Agree on absolute latest, ideal, and stretch goal for ICO opening
+	\item Make it crystal clear how likely it is we are to raise x million, xx million, xxx million
+	\item I need to clarify protocol with Zack
+	\item 
+\end{enumerate}
+
