@@ -566,12 +566,14 @@ Sources:
 	\item graph drawing library: http://sigmajs.org/
 	\item https://github.com/jacomyal/sigma.js/blob/master/README.md
 	\item simple websocket example: https://stackoverflow.com/questions/9914816/what-is-an-example-of-the-simplest-possible-socket-io-example
+	% 
+	\item sigma.js wiki: https://github.com/jacomyal/sigma.js/wiki
+	\item https://github.com/jacomyal/sigma.js/wiki/Public-API
 \end{enumerate}
 
 
 
 \title{January 19th}
-
 
 What I will accomplish by the meeting on the 24th of January:
 
@@ -600,12 +602,7 @@ What I will accomplish today:
 	\item write plug-in so I can specify the graph parameters
 	\item write plug-in so I can specify disconnected graphs and connect them arbitrarily
 \end{enumerate}
-
 what make sense today is if I leave with a reasonable app where on click,
-a graphs is spawned. so:
-	- get one graph to diplay on page, so load the min.js
-	- figure out the API so that I can do arbitrary graphs
-	
 
 
 What I accomplished today:
@@ -620,93 +617,138 @@ Sources:
 
 \begin{enumerate}
 	\item graph drawing library: http://sigmajs.org/
+	\item node-express-ts simple project: https://github.com/Microsoft/vscode-samples/tree/master/node-express-typescript
 	\item proper setup node.js typescript proejct: http://brianflove.com/2016/11/08/typescript-2-express-node/
 	\item express library: http://brianflove.com/2016/11/08/typescript-2-express-node/
 	\item https://github.com/jacomyal/sigma.js/blob/master/README.md
 	\item simple websocket example: https://stackoverflow.com/questions/9914816/what-is-an-example-of-the-simplest-possible-socket-io-example
 	\item full stack DAPP: https://medium.com/@mvmurthy/full-stack-hello-world-voting-ethereum-dapp-tutorial-part-1-40d2d0d807c2
+	\item dolphin kick: https://www.youtube.com/watch?v=Twmmf0EGflU
 \end{enumerate}
 
 \title{January 20th}
 
 
-Prepare for Meeting topics:
+What I will accomplish by the meeting on the 24th of January:
 
 \begin{enumerate}
-	\item Fix the protocol - attack each part as Tzou suggested
-	% 
-		\begin{itemize}
-			\item put the protocol in a  box and arrow diagram so we can all see what it is
-			\item write a thing that simulate a protocol so we can see how it works on a small scale
-		\begin{itemize}
-	% 
-	\item Fix the direction: monetize or not
-	% 
-		\begin{itemize}
-			\item write down where exactly does the protocol add value
-			\item think about how the value is different than what others can offer
-			\item disucss the future consequences in terms of hiring, location, etc
-			\item discuss the legal reasons for either paths
-			\item disucss what everyone envision their life style to be, number of kids they have, will have. and how they wish to raise their children
-		\begin{itemize}
-	% 
-	\item Fix the Name and overall brand image
-	% 
-		\begin{itemize}
-			\item discuss what we stand for, how we want people to refer to us, how we attract talent
-		\begin{itemize}
-	% 
-	\item make it crystal clear who these people are, how likely they are to contributed, what is the nature and history of the relationship we have with each person
-	% 
-		\begin{itemize}
-			\item disucss where they wish their career will head, how they see themselves grow as people and as "practioners of their craft"
-		\begin{itemize}
-	% 
-	\item Clarify minimum number of hours of contribution from each person
-	% 
-		\begin{itemize}
-			\item discuss how they see their role play out in the next few months
-			\item disucss realistic timeline for relocation, if needed
-		\begin{itemize}
-	% 
-	\item Assign deadline for professional headshots
-	% 
-		\begin{itemize}
-			\item nothing to do be said here, just do
-		\begin{itemize}
-	% 
-	\item Agree on absolute latest, ideal, and stretch goal for ICO opening
-	% 
-		\begin{itemize}
-			\item this will follow naturally form 
-		\begin{itemize}
-	% 
-	\item Fix the sections of the paper and assign them to each person with ownership
-	% 
-		\begin{itemize}
-			\item this will follow naturally from time committed, and deadline for ICO
-		\begin{itemize}
-	% 
-	\item Make it crystal clear how likely it is we are to raise x million, xx million, xxx million
-	% 
-		\begin{itemize}
-			\item this is primarily a discussion about the strength of relationships
-			\item this is not a question about details of development timeline
-		\begin{itemize}
-	% 
-	\item Assign roles within the organization
-	% 
-		\begin{itemize}
-			\item make it clear that this decision is for operational efficiency only, it is reversible and can be changed as needed
-		\begin{itemize}
-	% 
-	\item I need to clarify protocol with Zack on how we will collaborate in the codebase
-	% 
-		\begin{itemize}
-			\item clarify on a channel
-		\begin{itemize}
-	% 
+	\item make a simple simulation game where:
+		\begin{enumerate}
+			\item characters are spawned
+			\item transactions are passed between some arbitrary subset of adjacect vertices
+			\item blackbox validator will validate a percentage of transactions  -> validation mining
+			\item blackbox evaluation function will assign coins to faithful transactiions -> social mining payoff
+			\item coins will have a certain amount of time to maturity
+			\item an arbitary subset of players will ask for favors using coins they are given
+		\end{enumerate}
+	\item display the game somehow on an online portal
+\end{enumerate}
+
+What I will accomplish today:
+
+\begin{enumerate}
+	\item run a graph on the front end - done
+	\item write plug-in so I can specify the graph parameters
+	\item write plug-in so I can specify disconnected graphs and connect them arbitrarily
 \end{enumerate}
 
 
+What I accomplished today:
+
+\begin{enumerate}
+	\item display graph on front end
+	\item realize that modular front end code need browserfy
+\end{enumerate}
+
+Sources:
+
+\begin{enumerate}
+	\item pug tutorial: https://codepen.io/mimoduo/post/learn-pug-js-with-pugs
+	\item middle ware function tutorial: https://expressjs.com/en/guide/writing-middleware.html
+	\item frontend excel like table: http://visjs.org/docs/data/dataset.html
+	\item great boostrap templates: https://creativemarket.com/themes/bootstrap
+\end{enumerate}
+
+\title{January 22nd}
+
+What I will accomplish today:
+
+\begin{enumerate}
+	\item buy template and start getting familiar with it, write detailed version of why you think it's a good template for Zack
+	\item come up with a detailed meeting agenda and send it out to everyone, after discussing with Joao
+	\item Outline the whitepaper and determine which section makes the most sense for you to write about
+	\item host the template on node.js and start developing
+\end{enumerate}
+
+
+What I accomplished today:
+
+\begin{enumerate}
+	\item picked out a template
+	\item sent agenda to joao
+\end{enumerate}
+
+Sources:
+
+\begin{enumerate}
+	\item https://html2pug.herokuapp.com/
+	\item bootstrap with node.js express jade: https://www.andreagrandi.it/2013/02/24/using-twitter-bootstrap-with-node-js-express-and-jade/
+\end{enumerate}
+
+\title{Template Notes}
+
+Information we want to communicate: 
+
+\begin{enumerate}
+	\item Simplicity!!!
+	\item What we do: Trust as a Commodity
+	\item Who we are: Ivy league graduates from Math, Computer Science, and Statistics background
+	\item Issuing Cryptocurrency
+\end{enumerate}
+
+Emotions we want to communicate
+
+\begin{enumerate}
+	\item optimism
+	\item hopefullness
+	\item trustworthiness
+	\item aspirational
+\end{enumerate}
+
+Things to avoid:
+
+\begin{enumerate}
+	\item something too stodgy
+	\item something that looks like we think of ourselves more seriously
+	\item something that says: me too. Ie a bootstrap template that looks just everything else out there
+	\item something that shows muddle thoughts, ie too complex of a template
+\end{enumerate}
+
+
+/**
+	so let's simplify in what we need:
+		- a backend computational process that takes in parameters
+		- a pipe that sends stuff to the front end
+		- a rendering engine on the front end that renders stuff	
+
+	so what we need is first confirm we can pipe something to the front end ... 
+		game plan:
+	
+		I. Render graph
+			1. use the premade template because we know for sure it works
+			2. figure out how to write backend code that sends stuff to the front end
+					1. 
+			3. assert the front end can receive and render it
+
+		II. Render excel-like table
+			1. find a frontend template that works
+			2. assert it can receive JSON and render as expected
+
+		III. decide on persistance, is it needed?
+
+	1. set up a database so we can persist things
+	2. make sure we can refresh from the front and hardcode things so that things refresh in the back
+
+	pick a dark template, and a light template and develope it
+*/
 
