@@ -91,6 +91,7 @@ setInterval(() => {
     var msg = `Random message from backend with signature ${Math.floor(Math.random()*100)}`
     io.emit('message-2', msg)
     console.log("emitted message: "+ msg)
+    
 }, 5000);
 
 

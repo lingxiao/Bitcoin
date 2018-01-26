@@ -90,9 +90,7 @@ console.log("changed value: ", val)
 /**
     call XXX.sendTransaction(input, {from: user_x}, callback) will send transaction as contract
     to the network, and spend gas from user_x, with executed `callback`
-
     note r is undefined even though contract returns a value, because sendTransaction does not return value
-
 */ 
 var r = contract.change.sendTransaction(930, {from: user0}, function(err, val){
 
@@ -102,7 +100,9 @@ var r = contract.change.sendTransaction(930, {from: user0}, function(err, val){
         // the val returned is the transaction hash
         console.log("transaction successeded: ", val)
     }
+
 });
+
 
 contract.set.sendTransaction(500, {from: user0}, function(err, val){
 
