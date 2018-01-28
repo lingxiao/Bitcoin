@@ -118,7 +118,7 @@ app.get('/run-contract', (req, res) => {
             console.log("Hash: ", hash)
         })
 
-        // call contract API
+        // send contract fn to network to be executed
         myContract.methods.wealth().send({
             from: coinbase
 

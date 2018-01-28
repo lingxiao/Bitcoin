@@ -62,8 +62,7 @@ init bootstrap and initialize a new genesis block
 After the blockchain has been initialized we can connecting to the console by using the command:
 
 ```
-geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 console
-
+	geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --networkid 123 console
 ```
 
 [my addition to open a port for node.js process]
@@ -71,13 +70,13 @@ geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Docum
 if we want to expose a port for other process (ie node.js) to read from, do:
 
 ```
-geth --identity "myNode" --datadir data --networkid 123 --nodiscover --maxpeers 0 --rpc --rpcapi 'web3,eth,admin,personal,shh,debug' --rpcaddr '127.0.0.1' --rpcport 8545 --rpccorsdomain '*' console
+	geth --identity "myNode" --datadir data --networkid 123 --nodiscover --maxpeers 0 --rpc --rpcapi 'web3,eth,admin,personal,shh,debug' --rpcaddr '127.0.0.1' --rpcport 8545 --rpccorsdomain '*' console
 ```
 
 if we want to expose a websocket instead of http connection:
 
 ```
- geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --wsapi db,eth,net,web3,personal,web3  --networkid 123 --ws --wsport 8546 --wsorigins "*"  console
+	 geth --identity "node" --nodiscover --maxpeers 0 --datadir /Users/lingxiao/Documents/Projects/Bitcoin/src/ether-2/data --wsapi db,eth,net,web3,personal,web3  --networkid 123 --ws --wsport 8546 --wsorigins "*"  console
  ```
 
 note we have to specify ```wspai``` so that we can access the accounts from ```node.js```
