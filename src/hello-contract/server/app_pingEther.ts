@@ -96,7 +96,6 @@ app.get('/run-contract', (req, res) => {
             {
                 from    : coinbase,
                 gasPrice: "2000000"
-
             });
 
 
@@ -114,32 +113,28 @@ app.get('/run-contract', (req, res) => {
 
             if (err) { console.log("error on deployment: ", err) }
             console.log("Hash: ", hash)
+
         })
 
-        // // send contract fn to network to be executed
-        // problem: this is not doing what it's suppose to, error:
-        // Unhandled rejection Error: Couldn't decode uint256from ABI: 0x
-        myContract.methods.ping().send({ from: coinbase }, 
-            (err,val) => {
+        /**
+            where you left off: this does not execute on the blockchain
+            for some reasons
+        */
+        myContract.methods.sendCoin(receiver, 7000000).send({ 
+
+            from: coinbase,
+            gas: 100000,
+            gasPrice: '10000000'
+
+        }, (err,val) => {
+
                 if (err) { console.log(err) }
                 else {
-                    console.log("success: ", val)
+                    console.log("sent coin: ", val)
                 }
 
             })
         .then(console.log)
-
-
-        // .on('transactionHash', function(hash){
-        //     console.log("hash: ", hash)
-        // })
-        // .on('receipt', function(receipt){
-        //     console.log("recepit: ", receipt)
-        // })
-        // .on('confirmation', function(confirmationNumber, receipt){
-        //     console.log("conffirmation: ", receipt)
-        // })
-        // .on('error', console.error);        
 
     });
 

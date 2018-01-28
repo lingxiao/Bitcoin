@@ -23,7 +23,7 @@ contract Charity{
 	function sendCoin(address receiver, uint amount) returns (bool sufficient)
 	{
 
-		if (coinBalanceOf[msg.sender] < amount) return false;
+		// if (coinBalanceOf[msg.sender] < amount) return false;
 
 		coinBalanceOf[msg.sender] -= amount;
 		coinBalanceOf[receiver]   += amount;
@@ -43,7 +43,14 @@ contract Charity{
 		return coinBalanceOf[msg.sender];
 	}
 
-	function 
+	function ping() public constant returns (uint num) {
+		return 200;
+	}
+
+    function pong() returns(uint256 myNumber, string myString) {
+        return (23456, "Hello!%");
+    }	
+
 
 
 }
