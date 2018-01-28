@@ -60,7 +60,7 @@ const Contract = web3.eth.contract(abi_);
 
     reference: http://www.ethdocs.org/en/latest/contracts-and-transactions/contracts.html
     for more administrative steps in saving contract hash, etc.
-*/
+/
 web3.personal.unlockAccount(user0, "xenomorph1", 15000000);
 
 // ["Rama", "Nick", "Jose"],  // candidate for election
@@ -90,7 +90,7 @@ console.log("changed value: ", val)
 /**
     call XXX.sendTransaction(input, {from: user_x}, callback) will send transaction as contract
     to the network, and spend gas from user_x, with executed `callback`
-    note r is undefined even though contract returns a value, because sendTransaction does not return value
+     note r is undefined even though contract returns a value, because sendTransaction does not return value
 */ 
 var r = contract.change.sendTransaction(930, {from: user0}, function(err, val){
 
@@ -107,7 +107,7 @@ var r = contract.change.sendTransaction(930, {from: user0}, function(err, val){
 contract.set.sendTransaction(500, {from: user0}, function(err, val){
 
     if (err){ console.log("transaction error: ", err)      }
-    else    {  console.log("transaction succeeded: ", val) }
+    else    { console.log("transaction succeeded: ", val)  }
 
 });
 

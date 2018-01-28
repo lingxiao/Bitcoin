@@ -7,21 +7,28 @@
 import * as Web3     from 'web3'     ; 
 import * as fs       from 'fs'       ;
 import * as solc     from 'solc'     ;
+import { ContractFactory } from 'ethereum-contracts';
 var pr    = require("../lib/prelude");
 var utils = require('./contractUtils') ;
 
 var web3 : Web3 = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
 
-
 // load contract
 var contract_path : string = "../solidity/contracts/Charity.sol"
 var contract_bytecode : [Contract, String] = utils.compile_contract(contract_path, web3);
-
 var Contract : Contract = contract_bytecode[0];
 var bytecode : String   = contract_bytecode[1];
 
-// console.log("1. ", Contract);
-// console.log("2. ", bytecode);
+/********************************************************************
+	var coinbase = "0x449021b2219186745762b49cac0158107ad3e5ce";
+	const input : Buffer  = fs.readFileSync(contract_path)
+	const output : Object = solc.compile(input.toString(), 1);
+	var contract_name : string = ":" + pr.last(contract_path.split("/")).split(".")[0]
+	const bytecode : string = output.contracts[contract_name].bytecode
+	const abi_ : Array = JSON.parse(output.contracts[contract_name].interface);
+	var deployed = Contract.deploy({ data: '0x' + bytecode });
+	var callback = deployed.send({ from: coinbase, gas: 400000 })
+*/
 
 /**
 	@Use: get account and do something with it
@@ -30,42 +37,31 @@ web3.eth.getAccounts().then(accounts => {
 
 	utils.display_account(accounts, web3    );
 
-	console.log("--------------------------------------\n")
+	// console.log("--------------------------------------\n")
 	
 	// utils.deploy_contract(accounts, Contract, bytecode);
-	var coinbase = accounts[0]
+	// var coinbase = accounts[0]
+    // web3.eth.personal.unlockAccount(coinbase, 'password-1');
 
-	/**
-		problem: this api is depricated
-		need to find a new way to deploy contract
+	/*
+		problem: send of null
 	*/
-	var deployed_contract = Contract.new({data : "0x" + bytecode      
-	                                    , from : coinbase
-	                                    , gas  : 400000
-	                                    });
+	// Contract.deploy({ data: '0x' + bytecode }).send({
 
-	var contract = Contract.at(deployed_contract.address);
-	
-	/**
-	    call XXX.sendTransaction(input, {from: user_x}, callback) will send transaction as contract
-	    to the network, and spend gas from user_x, with executed `callback`
-	    note r is undefined even though contract returns a value, because sendTransaction does not return value
-	*/ 
-	contract.change.sendTransaction(3000, {from: coinbase}, (err, val) => {
+	// 	  from: coinbase
+	// 	, gas : 400000
 
-	    if (err){
-	        console.log("transaction error: ", err)
-	    } else {
-	        // the val returned is the transaction hash
-	        console.log("transaction successeded: ", val)
-	    }
+	// },  (err, transactionHash) => {
 
-	});
+	// 	if (err){
+	// 		console.log("error: ", err)
+	// 	} else {
+	// 		console.log("success: ", transactionHash)
+	// 	}
+	// })
 
-	console.log("--------------------------------------\n")
-	utils.display_account(accounts, web3    );
-
-
+	// utils.display_account(accounts, web3);
+	// console.log("--------------------------------------\n")
 });
 
 

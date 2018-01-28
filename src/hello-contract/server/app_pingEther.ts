@@ -31,11 +31,15 @@
 
         3. need to know the canonical way to factorize the code into differnt files -
 */ 
+import * as fs       from 'fs'       ;
+import * as solc     from 'solc'     ;
 import * as Web3     from 'web3'     ; 
 import * as express  from 'express'  ;
 import * as socketIO from 'socket.io';
 import * as http      from 'http'    ;
-const pr = require("../lib/prelude") ;
+const pr  = require("../lib/prelude") ;
+var utils = require('./contractUtils') ;
+
 
 const CLIENT_PATH = '/Users/lingxiao/Documents/Projects/Bitcoin/src/hello-contract/client';
 
@@ -43,6 +47,7 @@ var app    = express();
 var server = http.Server(app);
 var io     = socketIO(server);
 var web3   = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:8546'));
+
 
 app.get('/', (req,res) => {
     res.send("HOME!")
@@ -53,36 +58,87 @@ app.get('/index-1', (req,res) => {
     res.sendFile(CLIENT_PATH + '/index-1.html');
 });
 
+
 // subscriber to second process
 app.get('/index-2', (req,res) => {
     res.sendFile(CLIENT_PATH + '/index-2.html');
 });
 
+
 app.get('/transfer-fund', (req, res) => {
     /**
         on load, unlock account and transfer fund
     */
-    web3.eth.getAccounts().then(accounts => { transfer_funds(accounts) });
+    web3.eth.getAccounts().then(accounts => { utils.transfer_funds(accounts, web3) });
     res.send("transfering fund ... ")
 });
 
-/**
-    @Use: Given list of user accounts of lenght at least two, transfer
-          ether from user-1 to user-2. where user-1 is coinbase
-    @Input: accounts :: [String]
-*/
-function transfer_funds(accounts){
 
-    var sender   = accounts[0];
-    var receiver = accounts[1];
+app.get('/run-contract', (req, res) => {
 
-    web3.eth.personal.unlockAccount(sender  , 'password-1');
-    web3.eth.personal.unlockAccount(receiver, 'password-2');
+    /**
+        make contract
+    */ 
+    var contract_path : string = "../solidity/contracts/Charity.sol"
+    const input       = fs.readFileSync(contract_path)
+    const output      = solc.compile(input.toString(), 1);
+    var contract_name = ":" + pr.last(contract_path.split("/")).split(".")[0]
+    const bytecode    = output.contracts[contract_name].bytecode
+    const abi_        = JSON.parse(output.contracts[contract_name].interface);
 
-    web3.eth.sendTransaction({from: sender, to: receiver, value: 500000});
+    web3.eth.getAccounts().then(accounts => {
 
-    console.log("****** sent ether from " + sender + " to " + receiver + " **********");
-}
+        var coinbase = accounts[0];
+        var receiver = accounts[1];
+
+        // create contract
+        var myContract = new web3.eth.Contract([], {
+              from     : coinbase
+            , gasPrice : '20000000000'
+        });
+
+        // set address to coinbase, and jsonInterface to abi
+        myContract.options.address = coinbase;
+        myContract.options.jsonInterface = abi_;
+        
+        // deploy contract -> problem, how do I get the abi in here?
+        var deployedContract = myContract.deploy({
+
+            data: '0x' + bytecode,
+
+        }).send({
+
+            from: coinbase,
+            gas : 1500000 ,
+            gasPrice: '30000000000000'            
+
+        }, (err, hash) => {
+
+            if (err) { console.log("error on deployment: ", err)}
+            console.log("Hash: ", hash)
+        })
+
+        // call contract API
+        myContract.methods.wealth().send({
+            from: coinbase
+
+        }, (e,v) => {
+
+            if (e) {console.log("error: ", e)}
+
+            console.log("executed fn with return value: ", v)
+
+        }).then((receipt) => {
+            console.log("executed fn with receipt ", receipt);
+        })
+
+
+    });
+
+    res.send("Contract ran");
+
+})
+
 
 
 // a dummy process that is meant to dummy what's on the backend
@@ -91,13 +147,13 @@ setInterval(() => {
     var msg = `Random message from backend with signature ${Math.floor(Math.random()*100)}`
     io.emit('message-2', msg)
     console.log("emitted message: "+ msg)
-    
+
 }, 5000);
 
 
-// web3 account
+// web3 accountp
 web3.eth.getAccounts().then(accounts => {
-    display_account(accounts)
+    display_account(accounts, web3)
 });
 
 
@@ -124,8 +180,8 @@ function display_account(accounts){
                     /**
                         todo: make this a JSON
                     */
-                    var msg1 = 'Balance for user ' + user_0 + ' is ' + bal_0
-                    var msg2 = 'Balance for user ' + user_1 + ' is ' + bal_1
+                    var msg1 = 'Balance for coinbase is ' + bal_0
+                    var msg2 = 'Balance for receiver is ' + bal_1
                     var msg  = msg1 + '\n\n' + msg2
                     io.emit('message-1', msg)
                     console.log('emitted message: ', msg)

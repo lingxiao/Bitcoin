@@ -13,6 +13,39 @@ var exports = module.exports = {}
 module.exports = {
 
 	/**
+		@Use: given path to contract, make contract
+	*/
+	compile_contract: function(contract_path : String, web3 : Web3) : [Contract, String]
+	{
+
+		const input       = fs.readFileSync(contract_path)
+		const output      = solc.compile(input.toString(), 1);
+
+		// get contract key name
+		var contract_name = ":" + pr.last(contract_path.split("/")).split(".")[0]
+
+		/**
+		    This is the bytecode you get when the source code in [Contract].sol 
+		    is compiled. This is the code which will be deployed to the blockchain
+		*/
+		const bytecode = output.contracts[contract_name].bytecode
+
+
+		/**
+		    This is an interface or template of the contract (called abi) which tells 
+		    the contract user what methods are available in the contract. 
+		    Whenever you have to interact with the contract in the future, you will need this abi definition.
+		*/
+		const abi_ = JSON.parse(output.contracts[contract_name].interface);
+
+		// create contract class using ABI, instances of this Contract will have the interface specified by the abi
+		const Contract = new web3.eth.Contract(abi_);
+
+		return [Contract, bytecode];
+
+	},
+
+	/**
 		@Use: deploy contract
 	*/
 	deploy_contract: function(accounts, Contract, bytecode){
@@ -44,48 +77,33 @@ module.exports = {
 		    }
 
 		});
-	},
-
+	},	
 
 	/**
-		@Use: given path to contract, make contract
+	    @Use: Given list of user accounts of lenght at least two, transfer
+	          ether from user-1 to user-2. where user-1 is coinbase
+	    @Input: accounts :: [String]
 	*/
-	compile_contract: function(contract_path : String, web3 : Web3) : [Contract, String] 
+	transfer_funds : function(accounts : Array, web3 : Web3)
 	{
 
-		const input       = fs.readFileSync(contract_path)
-		const output      = solc.compile(input.toString(), 1);
+	    var sender   = accounts[0];
+	    var receiver = accounts[1];
 
-		// get contract key name
-		var contract_name = ":" + pr.last(contract_path.split("/")).split(".")[0]
+	    web3.eth.personal.unlockAccount(sender  , 'password-1', 40000);
+	    web3.eth.personal.unlockAccount(receiver, 'password-2', 40000);
 
-		/**
-		    This is the bytecode you get when the source code in [Contract].sol 
-		    is compiled. This is the code which will be deployed to the blockchain
-		*/
-		const bytecode = output.contracts[contract_name].bytecode
+	    web3.eth.sendTransaction({from: sender, to: receiver, value: 500000});
 
-
-		/**
-		    This is an interface or template of the contract (called abi) which tells 
-		    the contract user what methods are available in the contract. 
-		    Whenever you have to interact with the contract in the future, you will need this abi definition.
-		*/
-		const abi_     = JSON.parse(output.contracts[contract_name].interface);
-
-		console.log(web3.constructor.name);
-
-		// create contract class using ABI, instances of this Contract will have the interface specified by the abi
-		const Contract = new web3.eth.Contract(abi_);
-
-		return [Contract, bytecode];
-
+	    console.log("****** sent ether from coinbase to receiver");
 	},
+
 
 	/**
 		@Use: print accounts
 	*/
-	display_account: function(accounts : Array, web3 : Web3){
+	display_account: function(accounts : Array, web3 : Web3)
+	{
 
 	    var user_0 = accounts[0];
 	    var user_1 = accounts[1];
