@@ -92,16 +92,14 @@ app.get('/run-contract', (req, res) => {
         var receiver = accounts[1];
 
         // create contract
-        var myContract = new web3.eth.Contract([], {
-              from     : coinbase
-            , gasPrice : '20000000000'
-        });
+        var myContract = new web3.eth.Contract(abi_, coinbase,
+            {
+                from    : coinbase,
+                gasPrice: "2000000"
 
-        // set address to coinbase, and jsonInterface to abi
-        myContract.options.address = coinbase;
-        myContract.options.jsonInterface = abi_;
-        
-        // deploy contract -> problem, how do I get the abi in here?
+            });
+
+
         var deployedContract = myContract.deploy({
 
             data: '0x' + bytecode,
@@ -114,34 +112,43 @@ app.get('/run-contract', (req, res) => {
 
         }, (err, hash) => {
 
-            if (err) { console.log("error on deployment: ", err)}
+            if (err) { console.log("error on deployment: ", err) }
             console.log("Hash: ", hash)
         })
 
-        // send contract fn to network to be executed
-        myContract.methods.wealth().send({
-            from: coinbase
+        // // send contract fn to network to be executed
+        // problem: this is not doing what it's suppose to, error:
+        // Unhandled rejection Error: Couldn't decode uint256from ABI: 0x
+        myContract.methods.ping().send({ from: coinbase }, 
+            (err,val) => {
+                if (err) { console.log(err) }
+                else {
+                    console.log("success: ", val)
+                }
 
-        }, (e,v) => {
+            })
+        .then(console.log)
 
-            if (e) {console.log("error: ", e)}
 
-            console.log("executed fn with return value: ", v)
-
-        }).then((receipt) => {
-            console.log("executed fn with receipt ", receipt);
-        })
-
+        // .on('transactionHash', function(hash){
+        //     console.log("hash: ", hash)
+        // })
+        // .on('receipt', function(receipt){
+        //     console.log("recepit: ", receipt)
+        // })
+        // .on('confirmation', function(confirmationNumber, receipt){
+        //     console.log("conffirmation: ", receipt)
+        // })
+        // .on('error', console.error);        
 
     });
 
-    res.send("Contract ran");
+    res.send(`Contract ran with randnum ${Math.floor(Math.random()*100)}`);
 
 })
 
 
-
-// a dummy process that is meant to dummy what's on the backend
+// dummy process for testing
 setInterval(() => {
 
     var msg = `Random message from backend with signature ${Math.floor(Math.random()*100)}`
