@@ -10,7 +10,6 @@ var solc = require("solc");
 var Web3 = require("web3");
 var pr   = require("../lib/prelude");
 
-
 var web3 = new Web3();
 
 /**
@@ -31,7 +30,6 @@ const output      = solc.compile(input.toString(), 1);
 
 // get contract key name
 var contract_name = ":" + pr.last(contract_path.split("/")).split(".")[0]
-
 
 /**
     This is the bytecode you get when the source code in [Contract].sol 
@@ -102,7 +100,6 @@ var r = contract.change.sendTransaction(930, {from: user0}, function(err, val){
     }
 
 });
-
 
 contract.set.sendTransaction(500, {from: user0}, function(err, val){
 

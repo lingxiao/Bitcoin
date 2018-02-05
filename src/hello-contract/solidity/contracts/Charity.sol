@@ -12,7 +12,7 @@ contract Charity{
 		initalize the contract with what creater of contract has
 		initially
 	*/
-	function charity(uint supply){
+	function Charity(uint supply){
 
 		coinBalanceOf[msg.sender] = supply;
 	}
@@ -23,7 +23,7 @@ contract Charity{
 	function sendCoin(address receiver, uint amount) returns (bool sufficient)
 	{
 
-		// if (coinBalanceOf[msg.sender] < amount) return false;
+		require(coinBalanceOf[msg.sender] > amount);
 
 		coinBalanceOf[msg.sender] -= amount;
 		coinBalanceOf[receiver]   += amount;
@@ -31,7 +31,6 @@ contract Charity{
 		CoinTransfer(msg.sender, receiver, amount);
 
 		return true;
-
 	}
 
 

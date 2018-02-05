@@ -1,0 +1,60 @@
+{
+  "name": "hello-contract",
+  "version": "0.0.1",
+  "description": "simple contracts",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development nodemon ./bin/www",
+    "grunt": "grunt",
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "cryptocurrency",
+    "ethereum",
+    "typescript",
+    "javascript",
+    "bootstrap",
+    "express.js"
+  ],
+  "engines": {
+    "node": "v9.3.0"
+  },
+  "author": "Xiao Ling",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.2",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "pug": "^2.0.0-rc.4",
+    "socket.io": "^2.0.4",
+    "solc": "^0.4.19",
+    "truffle": "^4.0.5",
+    "web3": "^1.0.0-beta.29"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/errorhandler": "0.0.32",
+    "@types/method-override": "0.0.31",
+    "@types/morgan": "^1.7.35",
+    "chromedriver": "^2.35.0",
+    "ethereumjs-testrpc": "^6.0.3",
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-ts": "^6.0.0-beta.17",
+    "typescript": "^2.6.2"
+  }
+}

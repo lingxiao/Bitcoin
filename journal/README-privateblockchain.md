@@ -83,7 +83,6 @@ note we have to specify ```wspai``` so that we can access the accounts from ```n
 
 [end my addition to open a port for node.js process]
 
-
 At this point we are connected to the Ethereum console. To test if our blockchain works properly, we can try to create two different accounts and execute a transaction between them so that 1 ether will be transferred from account_0 to account_1. Follow the instructions:
 
 personal.newAccount("password").
